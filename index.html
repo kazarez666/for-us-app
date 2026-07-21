@@ -260,7 +260,7 @@ input[type="file"]{display:none}
     </div>
     <div class="header-actions">
       <button class="icon-btn" onclick="location.reload()" title="Обновить">🔄</button>
-      <button class="icon-btn" onclick="openSettings()">⚙️</button>
+      <button class="icon-btn" onclick="openSettings()">️</button>
     </div>
   </div>
   <div class="screen-container">
@@ -270,12 +270,12 @@ input[type="file"]{display:none}
         <div style="display:flex;align-items:center;gap:16px"><div style="font-size:54px" id="partnerMoodEmoji">💭</div><div><h3 style="color:var(--t1);font-size:22px;font-weight:700;margin-bottom:4px" id="partnerMoodLabel">Ещё не выбрано</h3><p style="color:var(--t2);font-size:14px" id="partnerMoodDesc">Партнёр пока не выбрал настроение</p></div></div>
       </div>
       <div class="letter-card"><div class="letter-title">Записочка для тебя</div><div class="letter-content empty" id="letterContent">Здесь появится записочка... ✨</div><div class="letter-divider"></div><div class="letter-footer" id="letterFooter">С любовью 💕</div></div>
-      <div class="photo-card"><div style="display:flex;justify-content:space-between;margin-bottom:12px"><span style="color:var(--t2);font-size:12px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700">Последнее фото</span></div><div class="photo-frame" id="lastPhotoFrame"><div class="photo-placeholder">📸</div></div><div class="photo-caption" id="lastPhotoCaption">Здесь появится фоточка 💕</div></div>
+      <div class="photo-card"><div style="display:flex;justify-content:space-between;margin-bottom:12px"><span style="color:var(--t2);font-size:12px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700">Последнее фото</span></div><div class="photo-frame" id="lastPhotoFrame"><div class="photo-placeholder"></div></div><div class="photo-caption" id="lastPhotoCaption">Здесь появится фоточка 💕</div></div>
       <div class="grid-2">
         <div class="quick-action" onclick="switchTab('camera')"><div class="quick-action-icon">📷</div><div class="quick-action-label">Отправить фото</div></div>
         <div class="quick-action" onclick="openNoteSheet()"><div class="quick-action-icon">💌</div><div class="quick-action-label">Написать записку</div></div>
         <div class="quick-action" onclick="switchTab('feelings')"><div class="quick-action-icon">💭</div><div class="quick-action-label">Мои чувства</div></div>
-        <div class="quick-action" onclick="switchTab('chat')"><div class="quick-action-icon">💬</div><div class="quick-action-label">Написать</div></div>
+        <div class="quick-action" onclick="switchTab('chat')"><div class="quick-action-icon"></div><div class="quick-action-label">Написать</div></div>
       </div>
     </div>
     <div class="screen" id="screen-feelings">
@@ -295,10 +295,10 @@ input[type="file"]{display:none}
       <div class="chat-input-area"><input type="text" class="chat-input" id="chatInput" placeholder="Сообщение..." onkeypress="if(event.key==='Enter')sendMessage()"><button class="send-btn" onclick="sendMessage()">➤</button></div>
     </div>
     <div class="screen" id="screen-camera" style="text-align:center;padding:40px 18px 160px">
-      <div class="section-title">Камера </div>
+      <div class="section-title">Камера 📷</div>
       <div class="section-subtitle">Отправь фоточку</div>
       <div style="margin:40px 0"><div class="photo-frame" id="cameraPreview" style="aspect-ratio:3/4;max-width:300px;margin:0 auto"><div class="photo-placeholder">📸</div></div></div>
-      <button class="btn" onclick="document.getElementById('cameraInput').click()" style="max-width:300px">📷 Сделать фото</button>
+      <button class="btn" onclick="document.getElementById('cameraInput').click()" style="max-width:300px"> Сделать фото</button>
       <button class="btn" onclick="document.getElementById('galleryInput').click()" style="max-width:300px;background:var(--inp)">🖼️ Выбрать из галереи</button>
     </div>
     <div class="screen" id="screen-us">
@@ -344,7 +344,7 @@ input[type="file"]{display:none}
         <div class="profile-subtitle" id="profileSubtitle">Нажми на аватар, чтобы изменить</div>
       </div>
       <div class="profile-section"><div class="profile-section-title">Аккаунт</div><div class="profile-menu"><div class="profile-menu-item" onclick="editProfile()"><div class="profile-menu-icon">✏️</div><div class="profile-menu-label">Редактировать профиль</div><div class="profile-menu-arrow">›</div></div></div></div>
-      <div class="profile-section"><div class="profile-section-title">Отношения</div><div class="profile-menu"><div class="profile-menu-item" onclick="openRelationshipStartSheet()"><div class="profile-menu-icon">💕</div><div class="profile-menu-label">Дата начала отношений</div><div class="profile-menu-arrow">›</div></div></div></div>
+      <div class="profile-section"><div class="profile-section-title">Отношения</div><div class="profile-menu"><div class="profile-menu-item" onclick="openRelationshipStartSheet()"><div class="profile-menu-icon"></div><div class="profile-menu-label">Дата начала отношений</div><div class="profile-menu-arrow">›</div></div></div></div>
       <div class="profile-section"><div class="profile-section-title">Приложение</div><div class="profile-menu"><div class="profile-menu-item" onclick="openThemes()"><div class="profile-menu-icon"></div><div class="profile-menu-label">Темы оформления</div><div class="profile-menu-arrow">›</div></div><div class="profile-menu-item" onclick="openBlocksSettings()"><div class="profile-menu-icon">⚙️</div><div class="profile-menu-label">Настройка блоков</div><div class="profile-menu-arrow">›</div></div></div></div>
       <div class="profile-section"><div class="profile-menu"><div class="profile-menu-item" style="color:#ff4757" onclick="logout()"><div class="profile-menu-icon">🚪</div><div class="profile-menu-label">Выйти из аккаунта</div><div class="profile-menu-arrow">›</div></div></div></div>
     </div>
@@ -383,16 +383,16 @@ input[type="file"]{display:none}
     <div class="secret-content">
       <div class="secret-panel active" id="secretPanelPhotos">
         <div class="secret-photo-btns">
-          <button class="btn" onclick="document.getElementById('secretCameraInput').click()" style="margin:0;width:calc(50% - 5px);max-width:200px">📷 Камера</button>
+          <button class="btn" onclick="document.getElementById('secretCameraInput').click()" style="margin:0;width:calc(50% - 5px);max-width:200px"> Камера</button>
           <button class="btn" onclick="document.getElementById('secretGalleryInput').click()" style="margin:0;width:calc(50% - 5px);max-width:200px;background:var(--inp)">🖼️ Галерея</button>
         </div>
         <div class="secret-photos-grid" id="secretPhotosGrid"></div>
       </div>
       <div class="secret-panel" id="secretPanelChat">
-        <div class="chat-messages" id="secretChatMessages" style="min-height:300px;margin-bottom:12px;padding-bottom:100px"><div style="text-align:center;color:var(--t3);padding:40px"><div style="font-size:48px;opacity:0.5;margin-bottom:12px">💬</div><div>Секретный чат</div></div></div>
+        <div class="chat-messages" id="secretChatMessages" style="min-height:300px;margin-bottom:12px;padding-bottom:100px"><div style="text-align:center;color:var(--t3);padding:40px"><div style="font-size:48px;opacity:0.5;margin-bottom:12px"></div><div>Секретный чат</div></div></div>
         <div style="display:flex;gap:8px;padding:12px;background:rgba(0,0,0,0.3);border-top:1px solid rgba(168,85,247,0.2);position:absolute;bottom:0;left:0;right:0">
           <input type="text" id="secretChatInput" placeholder="Сообщение..." style="flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:10px 16px;color:#fff;font-size:14px;outline:none" onkeypress="if(event.key==='Enter')sendSecretMessage()">
-          <button onclick="sendSecretMessage()" style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#a855f7,#ec4899);border:none;color:#fff;cursor:pointer;font-size:16px"></button>
+          <button onclick="sendSecretMessage()" style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#a855f7,#ec4899);border:none;color:#fff;cursor:pointer;font-size:16px">➤</button>
         </div>
       </div>
       <div class="secret-panel" id="secretPanelKama"><div id="kamaContent"></div></div>
@@ -427,8 +427,8 @@ let notificationPermission=false;
 let userAvatar=null;
 
 const roles={
-  artem:{name:'Артем',emoji:'👨',partner:'Сонечка',partnerEmoji:'🥰',avatar:null},
-  sonya:{name:'Сонечка',emoji:'👩',partner:'Артем',partnerEmoji:'😘',avatar:null}
+  artem:{name:'Артем',emoji:'',partner:'Сонечка',partnerEmoji:'🥰',avatar:null},
+  sonya:{name:'Сонечка',emoji:'',partner:'Артем',partnerEmoji:'😘',avatar:null}
 };
 
 let customMoods=JSON.parse(localStorage.getItem('customMoods')||'[]');
@@ -446,25 +446,25 @@ const defaultMoods=[
   {emoji:'😢',label:'Грусть',id:'sad'},
   {emoji:'😴',label:'Усталость',id:'tired'},
   {emoji:'😌',label:'Спокойствие',id:'calm'},
-  {emoji:'🤩',label:'Восторг',id:'excited'},
-  {emoji:'🥰',label:'Любовь',id:'love'}
+  {emoji:'',label:'Восторг',id:'excited'},
+  {emoji:'',label:'Любовь',id:'love'}
 ];
 
 const defaultSpicy=[
   {emoji:'💋',label:'Нежность',id:'tender'},
-  {emoji:'',label:'Близость',id:'close'},
+  {emoji:'🔥',label:'Близость',id:'close'},
   {emoji:'💆',label:'Массаж',id:'massage'}
 ];
 
-const ideas=["Романтический ужин при свечах ️","Прогулка по ночному городу ","Пикник в парке 🧺","Домашний кинотеатр 🍿","Танцы при свечах 💃","Спа-день дома 💆","Настольные игры 🎲","Завтрак в постель ","Музей или галерея ️","Катание на лодке ","Уютное кафе ☕","Концерт или шоу 🎤","Старый город 🏰","Велопрогулка 🚲","Фермерский рынок 🥬","Кулинарный класс 🍳","Аквапарк 🌊","Океанариум 🐠","Фестиваль 🎪","Совместный альбом ","Лесная прогулка 🌲","Звёзды ночью 🌃","Театр 🎭","Лыжи 🎿","Баня 🧖","Плейлист 🎧","Арт-выставка 🖼️","Пикник у озера 🏕️","Коньки ⛸️","Уличная еда ","Стрит-арт 🖼️","Закат на набережной 🌅","Квест ️","Лошади 🐴","Вино 🍷","Фонарики ночью 🌃","Танцы 💃","Мотоцикл ️","Кино под небом 🎬","Планетарий 🌌","Гончарная мастерская 🏺","Караоке 🎤","Коктейли ","Сапборды 🏄","Аттракционы 🎢","Пробежка 🏃","Рисование 🎨","Оранжерея 🌿","Джаз ","Книжный 📚","Суши ","Телескоп 🔭","Фотоальбом 📷","Чай и медитация 🍵","Ночной пляж ️","Кофейня с котиками ","Кухонные танцы 💃","Горы ⛰️","Старые фильмы ","Коктейли 🍸","Бильярд 🎱","Волонтёрство 🤝"];
+const ideas=["Романтический ужин при свечах 🕯️","Прогулка по ночному городу 🌃","Пикник в парке 🧺","Домашний кинотеатр 🍿","Танцы при свечах 💃","Спа-день дома 💆","Настольные игры ","Завтрак в постель 🥐","Музей или галерея 🖼️","Катание на лодке 🚣","Уютное кафе ☕","Концерт или шоу ","Старый город 🏰","Велопрогулка 🚲","Фермерский рынок 🥬","Кулинарный класс 🍳","Аквапарк 🌊","Океанариум 🐠","Фестиваль 🎪","Совместный альбом 📸","Лесная прогулка 🌲","Звёзды ночью 🌃","Театр ","Лыжи 🎿","Баня ","Плейлист 🎧","Арт-выставка 🖼️","Пикник у озера 🏕️","Коньки ️","Уличная еда 🌯","Стрит-арт 🖼️","Закат на набережной 🌅","Квест 🕵️","Лошади 🐴","Вино 🍷","Фонарики ночью 🌃","Танцы 💃","Мотоцикл ️","Кино под небом 🎬","Планетарий 🌌","Гончарная мастерская 🏺","Караоке 🎤","Коктейли ","Сапборды 🏄","Аттракционы 🎢","Пробежка 🏃","Рисование 🎨","Оранжерея 🌿","Джаз ","Книжный 📚","Суши ","Телескоп 🔭","Фотоальбом 📷","Чай и медитация 🍵","Ночной пляж 🏖️","Кофейня с котиками 🐱","Кухонные танцы 💃","Горы ⛰️","Старые фильмы 🎬","Коктейли 🍸","Бильярд 🎱","Волонтёрство "];
 
 const questions=[{text:"Что для тебя идеальная любовь?",category:"Любовь"},{text:"Какой момент в наших отношениях самый важный?",category:"Отношения"},{text:"Что ты ценишь во мне больше всего?",category:"Ценности"},{text:"О чём ты мечтаешь в глубине души?",category:"Мечты"},{text:"Что делает тебя по-настоящему счастливым?",category:"Счастье"},{text:"Какой твой самый сокровенный страх?",category:"Страхи"},{text:"Как ты представляешь наше будущее через 5 лет?",category:"Будущее"},{text:"Что для тебя значит доверие?",category:"Доверие"},{text:"Какой комплимент тебе запомнился?",category:"Комплименты"},{text:"Что ты хочешь, чтобы я знал о тебе?",category:"Откровенность"},{text:"Какое качество во мне тебе нравится?",category:"Качества"},{text:"Что ты чувствуешь, когда мы вместе?",category:"Чувства"},{text:"Что помогает тебе чувствовать себя любимым?",category:"Любовь"},{text:"Самое яркое детское воспоминание?",category:"Прошлое"},{text:"Что бы ты изменил в прошлом?",category:"Прошлое"},{text:"Кто оказал наибольшее влияние на тебя?",category:"Люди"},{text:"Твоё главное достижение?",category:"Достижения"},{text:"Совет себе 10 лет назад?",category:"Мудрость"},{text:"Что для тебя значит свобода?",category:"Ценности"},{text:"Как справляешься со стрессом?",category:"Привычки"},{text:"Что вдохновляет каждый день?",category:"Вдохновение"},{text:"Идеальный день?",category:"Мечты"},{text:"Что хочешь успеть в жизни?",category:"Цели"},{text:"Как понимаешь, что любишь?",category:"Любовь"},{text:"Быть правым или счастливым?",category:"Философия"},{text:"Момент, который прожил бы снова?",category:"Прошлое"},{text:"Что ценишь в дружбе?",category:"Отношения"},{text:"Как хочешь, чтобы запомнили?",category:"Наследие"},{text:"Что раздражает в людях?",category:"Характер"},{text:"Любимый способ проводить время?",category:"Привычки"},{text:"Настоящее богатство?",category:"Ценности"},{text:"Как понимаешь успех?",category:"Цели"},{text:"Что изменить в мире?",category:"Мечты"},{text:"Урок, усвоенный недавно?",category:"Мудрость"},{text:"Что делает отношения крепкими?",category:"Отношения"},{text:"Как выражаешь любовь?",category:"Любовь"},{text:"Что значит дом?",category:"Ценности"},{text:"Самый странный талант?",category:"Личность"},{text:"Что узнать обо мне?",category:"Откровенность"},{text:"Как провести годовщину?",category:"Мечты"},{text:"Что чувствуешь в объятиях?",category:"Чувства"},{text:"Самый романтичный момент?",category:"Отношения"},{text:"Что делать чаще?",category:"Отношения"},{text:"Представь свадьбу?",category:"Будущее"},{text:"Что значит семья?",category:"Ценности"},{text:"Как расти вместе?",category:"Будущее"},{text:"Что ценишь в нас?",category:"Отношения"},{text:"Самый ценный опыт?",category:"Опыт"},{text:"Что знать о чувствах?",category:"Откровенность"},{text:"Как поддерживать друг друга?",category:"Отношения"}];
 
-const achievements=[{id:'days7',icon:'🌟',title:'Первая неделя',desc:'7 дней вместе',check:()=>getDaysTogether()>=7},{id:'days30',icon:'🎉',title:'Месяц любви',desc:'30 дней вместе',check:()=>getDaysTogether()>=30},{id:'days100',icon:'💯',title:'100 дней',desc:'100 дней вместе',check:()=>getDaysTogether()>=100},{id:'days365',icon:'🎂',title:'Год вместе!',desc:'365 дней',check:()=>getDaysTogether()>=365},{id:'msg100',icon:'💬',title:'Болтуны',desc:'100 сообщений',check:()=>getMessagesCount()>=100},{id:'msg1000',icon:'',title:'Неразлучные',desc:'1000 сообщений',check:()=>getMessagesCount()>=1000},{id:'photo10',icon:'📸',title:'Фотографы',desc:'10 фото',check:()=>getPhotosCount()>=10},{id:'photo50',icon:'🎨',title:'Коллекционеры',desc:'50 фото',check:()=>getPhotosCount()>=50},{id:'wish1',icon:'🎁',title:'Первый подарок',desc:'1 желание исполнено',check:()=>getFulfilledWishes()>=1},{id:'wish5',icon:'🎀',title:'Даритель',desc:'5 желаний исполнено',check:()=>getFulfilledWishes()>=5}];
+const achievements=[{id:'days7',icon:'',title:'Первая неделя',desc:'7 дней вместе',check:()=>getDaysTogether()>=7},{id:'days30',icon:'🎉',title:'Месяц любви',desc:'30 дней вместе',check:()=>getDaysTogether()>=30},{id:'days100',icon:'',title:'100 дней',desc:'100 дней вместе',check:()=>getDaysTogether()>=100},{id:'days365',icon:'🎂',title:'Год вместе!',desc:'365 дней',check:()=>getDaysTogether()>=365},{id:'msg100',icon:'💬',title:'Болтуны',desc:'100 сообщений',check:()=>getMessagesCount()>=100},{id:'msg1000',icon:'📱',title:'Неразлучные',desc:'1000 сообщений',check:()=>getMessagesCount()>=1000},{id:'photo10',icon:'📸',title:'Фотографы',desc:'10 фото',check:()=>getPhotosCount()>=10},{id:'photo50',icon:'',title:'Коллекционеры',desc:'50 фото',check:()=>getPhotosCount()>=50},{id:'wish1',icon:'',title:'Первый подарок',desc:'1 желание исполнено',check:()=>getFulfilledWishes()>=1},{id:'wish5',icon:'🎀',title:'Даритель',desc:'5 желаний исполнено',check:()=>getFulfilledWishes()>=5}];
 
-const timelinePresets=[{emoji:'👋',title:'Первое знакомство'},{emoji:'☕',title:'Первое свидание'},{emoji:'',title:'Первый поцелуй'},{emoji:'💕',title:'Начало отношений'},{emoji:'😘',title:'Первая близость'},{emoji:'🏠',title:'Переехали вместе'},{emoji:'✈️',title:'Первое путешествие'},{emoji:'🎊',title:'Годовщина'},{emoji:'💍',title:'Предложение'},{emoji:'🎉',title:'Свадьба'}];
+const timelinePresets=[{emoji:'👋',title:'Первое знакомство'},{emoji:'☕',title:'Первое свидание'},{emoji:'💋',title:'Первый поцелуй'},{emoji:'💕',title:'Начало отношений'},{emoji:'',title:'Первая близость'},{emoji:'🏠',title:'Переехали вместе'},{emoji:'✈️',title:'Первое путешествие'},{emoji:'🎊',title:'Годовщина'},{emoji:'💍',title:'Предложение'},{emoji:'🎉',title:'Свадьба'}];
 
-const avatarOptions=['👨','👩','','👧','🧔','','👴','👵','','👸','🦸','','🧟','🧜','','🐱','🐶','','🐼','🐯','','🌼','🌳','⭐','✨','💫','☀️','🌙','⚡','❄️','🌈','🎊','🎭','','🎳','🎱','','🥉','⛸️','🚵','💗','💓','💞','❣️','❤️','','💚','💙','🖤','🤍'];
+const avatarOptions=['👨','👩','👦','👧','🧔','👱','👴','👵','👶','👸','🦸','','🧟','🧜','','🐱','🐶','','🐼','🐯','','🌼','🌳','⭐','✨','💫','☀️','','⚡','❄️','','🎊','🎭','','🎳','🎱','','🥉','⛸️','🚵','💗','💓','💞','❣️','❤️','','💚','💙','🖤','🤍'];
 
 let hiddenBlocks=JSON.parse(localStorage.getItem('hiddenBlocks')||'[]');
 let secretPhotos=[];
@@ -503,7 +503,7 @@ function checkPartnerStatus(){
     const diffMinutes=(now-lastSeen)/1000/60;
     const statusEl=document.getElementById('headerStatus');
     if(diffMinutes<2){
-      statusEl.textContent='В сети 💚';
+      statusEl.textContent='В сети ';
       statusEl.style.color='#4ade80';
     }else{
       const mins=Math.floor(diffMinutes);
@@ -594,7 +594,6 @@ function selectRole(role){
   
   requestNotificationPermission();
   
-  // Запускаем polling для синхронизации настроения и желаний
   startSyncPolling();
 }
 
@@ -602,13 +601,12 @@ function startSyncPolling(){
   clearInterval(syncInterval);
   syncInterval=setInterval(()=>{
     syncPartnerData();
-  },5000); // Каждые 5 секунд
+  },3000);
 }
 
 async function syncPartnerData(){
   const partnerRole=currentRole==='artem'?'sonya':'artem';
   
-  // Синхронизируем настроение партнера
   const partnerMoods=await loadFromDB('moods_'+partnerRole);
   if(partnerMoods&&partnerMoods.length>0){
     const lastMood=partnerMoods[partnerMoods.length-1];
@@ -623,9 +621,8 @@ async function syncPartnerData(){
     }
   }
   
-  // Синхронизируем желания партнера
   const partnerSpicy=await loadFromDB('spicy_'+partnerRole);
-  if(partnerSpicy){
+  if(partnerSpicy&&Array.isArray(partnerSpicy)){
     localStorage.setItem('spicyValues_'+partnerRole,JSON.stringify(partnerSpicy));
     if(document.getElementById('screen-feelings').classList.contains('active')){
       renderSpicyPartner();
@@ -683,7 +680,7 @@ function loadAllData(){
   });
   
   loadFromDB('spicy_'+partnerRole).then(spicy=>{
-    if(spicy){localStorage.setItem('spicyValues_'+partnerRole,JSON.stringify(spicy));if(document.getElementById('screen-feelings').classList.contains('active'))renderSpicyPartner()}
+    if(spicy&&Array.isArray(spicy)){localStorage.setItem('spicyValues_'+partnerRole,JSON.stringify(spicy));if(document.getElementById('screen-feelings').classList.contains('active'))renderSpicyPartner()}
   });
 }
 
@@ -697,7 +694,7 @@ function loadPartnerMood(){
       document.getElementById('partnerMoodDesc').textContent='Выбрано недавно';
       document.getElementById('moodTime').textContent='недавно';
     }else{
-      document.getElementById('partnerMoodEmoji').textContent='';
+      document.getElementById('partnerMoodEmoji').textContent='💭';
       document.getElementById('partnerMoodLabel').textContent='Ещё не выбрано';
       document.getElementById('partnerMoodDesc').textContent='Партнёр пока не выбрал настроение';
       document.getElementById('moodTime').textContent='—';
@@ -838,7 +835,7 @@ function renderSpicyPartner(){
   const partnerRole=currentRole==='artem'?'sonya':'artem';
   const partnerSpicy=JSON.parse(localStorage.getItem('spicyValues_'+partnerRole)||'[]');
   
-  if(!partnerSpicy||partnerSpicy.length===0){
+  if(!partnerSpicy||!Array.isArray(partnerSpicy)||partnerSpicy.length===0){
     container.innerHTML='<div style="text-align:center;color:var(--t3);padding:20px;font-size:13px">Партнёр ещё не поделился желаниями</div>';
     return;
   }
@@ -872,7 +869,7 @@ function sendDesires(){
     values.push({emoji:label.split(' ')[0],label:label.split(' ').slice(1).join(' '),value:val});
   });
   
-  localStorage.setItem('spicyValues_'+currentRole,JSON.stringify(savedSpicyValues));
+  localStorage.setItem('spicyValues_'+currentRole,JSON.stringify(values));
   saveToDB('spicy_'+currentRole,values);
   
   showToast('🔥 Желания отправлены партнёру!');
@@ -978,7 +975,7 @@ function renderWishlist(){
     if(currentWishlistTab==='fulfilled')html+='<button class="wishlist-btn wishlist-btn-delete" onclick="deleteWish('+realIdx+')">✕</button>';
     html+='</div></div>';
     html+='<div style="margin-top:8px;font-size:11px;color:'+addedByColor+'">Добавил: '+addedByText+'</div>';
-    if(item.url)html+='<a href="'+item.url+'" target="_blank" class="wishlist-link"> '+item.url+'</a>';
+    if(item.url)html+='<a href="'+item.url+'" target="_blank" class="wishlist-link">🔗 '+item.url+'</a>';
     if(item.fulfilled)html+='<div style="margin-top:8px"><span class="wishlist-badge">✓ Исполнено</span></div>';
     div.innerHTML=html;
     container.appendChild(div);
@@ -1008,7 +1005,7 @@ function fulfillWish(i){
   localStorage.setItem('wishlist',JSON.stringify(items));
   saveToDB('wishlist',items);
   renderWishlist();
-  showToast('Исполнено! ');
+  showToast('Исполнено! 🎉');
 }
 
 function archiveWish(i){
@@ -1187,7 +1184,7 @@ function switchSecretTab(tab){
 
 function renderKamaCategories(){
   const container=document.getElementById('kamaContent');
-  let html='<h3 style="color:#fff;margin-bottom:16px;font-size:18px"> Выбери категорию</h3><div class="kama-categories">';
+  let html='<h3 style="color:#fff;margin-bottom:16px;font-size:18px">🔥 Выбери категорию</h3><div class="kama-categories">';
   Object.keys(kamaDB).forEach(category=>{
     const count=kamaDB[category].length;
     const icon=category==='Позы'?'🛏️':category==='Места'?'📍':category==='Настроение'?'😊':category==='Игры'?'🎲':'💋';
@@ -1311,7 +1308,7 @@ function closeModal(){document.getElementById('modal').classList.remove('active'
 
 function openAvatarPicker(){
   let html='<div class="sheet-title">Выбери аватар</div>';
-  html+='<div style="margin-bottom:16px"><button class="btn" onclick="document.getElementById(\'avatarFileInput\').click()" style="margin:0;width:100%"> Загрузить фото</button></div>';
+  html+='<div style="margin-bottom:16px"><button class="btn" onclick="document.getElementById(\'avatarFileInput\').click()" style="margin:0;width:100%">📷 Загрузить фото</button></div>';
   html+='<input type="file" id="avatarFileInput" accept="image/*" style="display:none" onchange="uploadAvatar(event)">';
   html+='<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;padding:10px 0;max-height:300px;overflow-y:auto">';
   avatarOptions.forEach(av=>{
@@ -1403,7 +1400,7 @@ function handlePhotoUpload(e,previewId,frameId,captionId,sendToPartner){
     localStorage.setItem('photosCount',count.toString());
     if(sendToPartner){saveToDB('lastPhoto_'+currentRole,imgSrc)}
     updateStats();
-    showToast(' Фото отправлено!');
+    showToast('📸 Фото отправлено!');
     switchTab('home');
   };
   reader.readAsDataURL(file);
@@ -1417,7 +1414,7 @@ function handleSecretPhotoUpload(e){
   reader.onload=function(ev){
     const imgSrc=ev.target.result;
     db.from('secret_photos').insert([{sender:currentRole,photo_url:imgSrc}]).then(({error})=>{
-      if(!error){loadSecretPhotos();showToast('📸 Фото добавлено!')}
+      if(!error){loadSecretPhotos();showToast(' Фото добавлено!')}
     });
   };
   reader.readAsDataURL(file);
@@ -1433,7 +1430,6 @@ function loadSecretPhotos(){
   });
 }
 
-// Realtime подписки для чата
 db.channel('messages_realtime').on('postgres_changes',{
   event:'INSERT',
   schema:'public',
