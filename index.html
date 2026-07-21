@@ -18,6 +18,7 @@ html,body{font-family:'Manrope',-apple-system,sans-serif;height:100%;overflow:hi
 .header-avatar{width:44px;height:44px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:var(--sh)}
 .header-info{flex:1}
 .header-info h2{color:var(--t1);font-size:17px;font-weight:700}
+.header-info p{color:var(--t2);font-size:12px}
 .header-actions{display:flex;gap:8px}
 .icon-btn{width:38px;height:38px;border-radius:50%;background:var(--card);border:1px solid var(--card-b);color:var(--t1);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;transition:all 0.3s}
 .icon-btn:active{transform:scale(0.9) rotate(180deg);background:var(--inp)}
@@ -241,16 +242,52 @@ input[type="file"]{display:none}
 .secret-photo-item{aspect-ratio:1;border-radius:14px;overflow:hidden;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.2);position:relative}
 .secret-photo-item img{width:100%;height:100%;object-fit:cover}
 .secret-photo-btns{display:flex;gap:10px;justify-content:center;margin-bottom:14px;flex-wrap:wrap}
+
+/* Исправление цвета текста для светлых тем */
+[data-theme="pink"] .btn,
+[data-theme="blue"] .btn,
+[data-theme="warm"] .btn {
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+[data-theme="pink"] .sheet-btn-primary,
+[data-theme="blue"] .sheet-btn-primary,
+[data-theme="warm"] .sheet-btn-primary {
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+[data-theme="pink"] .quick-action-label,
+[data-theme="blue"] .quick-action-label,
+[data-theme="warm"] .quick-action-label {
+  color: var(--t1);
+}
+
+[data-theme="pink"] .tab-label,
+[data-theme="blue"] .tab-label,
+[data-theme="warm"] .tab-label {
+  color: var(--t1);
+}
+
+[data-theme="pink"] .tab-item.active .tab-label,
+[data-theme="blue"] .tab-item.active .tab-label,
+[data-theme="warm"] .tab-item.active .tab-label {
+  color: var(--acc);
+}
 </style>
 </head>
 <body>
-<div class="phone-frame" id="phoneFrame">
+  <div class="phone-frame" id="phoneFrame">
   <div class="app-header">
     <div class="header-avatar" id="headerAvatar"></div>
-    <div class="header-info"><h2 id="headerName">Сонечка</h2></div>
+    <div class="header-info">
+      <h2 id="headerName">Сонечка</h2>
+      <p id="headerStatus" style="color:var(--t2)">Был(а) недавно</p>
+    </div>
     <div class="header-actions">
       <button class="icon-btn" onclick="location.reload()" title="Обновить">🔄</button>
-      <button class="icon-btn" onclick="openSettings()">⚙️</button>
+      <button class="icon-btn" onclick="openSettings()">️</button>
     </div>
   </div>
   <div class="screen-container">
@@ -264,8 +301,8 @@ input[type="file"]{display:none}
       <div class="grid-2">
         <div class="quick-action" onclick="switchTab('camera')"><div class="quick-action-icon">📷</div><div class="quick-action-label">Отправить фото</div></div>
         <div class="quick-action" onclick="openNoteSheet()"><div class="quick-action-icon">💌</div><div class="quick-action-label">Написать записку</div></div>
-        <div class="quick-action" onclick="switchTab('feelings')"><div class="quick-action-icon"></div><div class="quick-action-label">Мои чувства</div></div>
-        <div class="quick-action" onclick="switchTab('chat')"><div class="quick-action-icon">💬</div><div class="quick-action-label">Написать</div></div>
+        <div class="quick-action" onclick="switchTab('feelings')"><div class="quick-action-icon">💭</div><div class="quick-action-label">Мои чувства</div></div>
+        <div class="quick-action" onclick="switchTab('chat')"><div class="quick-action-icon"></div><div class="quick-action-label">Написать</div></div>
       </div>
     </div>
     <div class="screen" id="screen-feelings">
@@ -277,7 +314,7 @@ input[type="file"]{display:none}
       <div id="spicySliders"></div>
       <div style="display:flex;justify-content:space-between;align-items:center;margin:28px 18px 14px"><span style="color:var(--t1);font-size:16px;font-weight:700">Желания партнёра 💕</span></div>
       <div id="spicySlidersPartner"></div>
-      <button class="btn" onclick="sendDesires()">💌 Отправить партнёру</button>
+      <button class="btn" onclick="sendDesires()"> Отправить партнёру</button>
     </div>
     <div class="screen chat-screen" id="screen-chat">
       <div class="chat-header"><div style="color:var(--t1);font-weight:700;font-size:16px">💬 Чат</div></div>
@@ -289,7 +326,7 @@ input[type="file"]{display:none}
       <div class="section-subtitle">Отправь фоточку</div>
       <div style="margin:40px 0"><div class="photo-frame" id="cameraPreview" style="aspect-ratio:3/4;max-width:300px;margin:0 auto"><div class="photo-placeholder"></div></div></div>
       <button class="btn" onclick="document.getElementById('cameraInput').click()" style="max-width:300px">📷 Сделать фото</button>
-      <button class="btn" onclick="document.getElementById('galleryInput').click()" style="max-width:300px;background:var(--inp)">️ Выбрать из галереи</button>
+      <button class="btn" onclick="document.getElementById('galleryInput').click()" style="max-width:300px;background:var(--inp)">🖼️ Выбрать из галереи</button>
     </div>
     <div class="screen" id="screen-us">
       <div class="section-title">Для нас 💕</div>
@@ -307,9 +344,9 @@ input[type="file"]{display:none}
       </div>
       <div class="section-title" style="font-size:18px;margin:28px 18px 12px" id="block-timeline-title">📖 Наша история</div>
       <button class="btn-small" onclick="openTimelineSheet()" style="margin:0 18px 14px" id="block-timeline-btn">+ Добавить событие</button>
-      <div class="timeline" id="block-timeline"><div id="timelineContainer"><div style="text-align:center;color:var(--t3);padding:40px"><div style="font-size:48px;opacity:0.5;margin-bottom:12px"></div><div>Добавьте важные моменты</div></div></div></div>
+      <div class="timeline" id="block-timeline"><div id="timelineContainer"><div style="text-align:center;color:var(--t3);padding:40px"><div style="font-size:48px;opacity:0.5;margin-bottom:12px">📖</div><div>Добавьте важные моменты</div></div></div></div>
       <div class="section-title" style="font-size:18px;margin:20px 18px 12px" id="block-achievements-title">🏆 Достижения</div>
-      <button class="btn" onclick="openAchievements()" style="margin:0 18px 18px;width:calc(100% - 36px)">Посмотреть достижения </button>
+      <button class="btn" onclick="openAchievements()" style="margin:0 18px 18px;width:calc(100% - 36px)">Посмотреть достижения 🏆</button>
       <div class="section-title" style="font-size:18px;margin:20px 18px 12px" id="block-wishlist-title">📝 Список желаний</div>
       <div class="wishlist-tabs" id="block-wishlist">
         <div class="wishlist-tab active" onclick="switchWishlistTab('active',this)">Активные</div>
@@ -329,7 +366,7 @@ input[type="file"]{display:none}
     </div>
     <div class="screen profile-screen" id="screen-profile">
       <div class="profile-header">
-        <div class="profile-avatar" id="profileAvatar" onclick="openAvatarPicker()"></div>
+        <div class="profile-avatar" id="profileAvatar" onclick="openAvatarPicker()">👨</div>
         <div class="profile-name" id="profileName">Артем</div>
         <div class="profile-subtitle" id="profileSubtitle">Нажми на аватар, чтобы изменить</div>
       </div>
@@ -340,10 +377,10 @@ input[type="file"]{display:none}
     </div>
   </div>
   <div class="tab-bar">
-    <div class="tab-item active" onclick="switchTab('home')"><div class="tab-icon">🏠</div><div class="tab-label">Главная</div></div>
+    <div class="tab-item active" onclick="switchTab('home')"><div class="tab-icon"></div><div class="tab-label">Главная</div></div>
     <div class="tab-item" onclick="switchTab('feelings')"><div class="tab-icon">💭</div><div class="tab-label">Чувства</div></div>
-    <div class="tab-item camera-tab" onclick="switchTab('camera')"><div class="tab-icon"></div></div>
-    <div class="tab-item" onclick="switchTab('chat')"><div class="tab-icon">💬</div><div class="tab-label">Чат</div></div>
+    <div class="tab-item camera-tab" onclick="switchTab('camera')"><div class="tab-icon">📷</div></div>
+    <div class="tab-item" onclick="switchTab('chat')"><div class="tab-icon"></div><div class="tab-label">Чат</div></div>
     <div class="tab-item" onclick="switchTab('us')"><div class="tab-icon">💕</div><div class="tab-label">Для нас</div></div>
   </div>
   <div class="role-select" id="roleSelect">
@@ -354,7 +391,7 @@ input[type="file"]{display:none}
     <button class="role-btn" onclick="selectRole('sonya')"><span class="emoji">👩</span><span>Я — Сонечка</span></button>
   </div>
   <div class="secret-lock" id="secretLock">
-    <div style="position:absolute;top:44px;right:18px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center" onclick="closeSecretLock()"></div>
+    <div style="position:absolute;top:44px;right:18px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center" onclick="closeSecretLock()">✕</div>
     <div class="secret-icon">🔞</div>
     <div class="secret-title">Секретная комната</div>
     <div class="secret-subtitle" id="secretSubtitle">Введи PIN-код</div>
@@ -368,8 +405,8 @@ input[type="file"]{display:none}
     <div class="pin-error" id="pinError"></div>
   </div>
   <div class="secret-screen" id="secretScreen">
-    <div class="secret-header"><div style="font-size:26px"></div><h2>Секретная комната</h2><div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center" onclick="closeSecret()"></div></div>
-    <div class="secret-tabs"><div class="secret-tab active" onclick="switchSecretTab('photos')">📸 Фото</div><div class="secret-tab" onclick="switchSecretTab('chat')">💬 Чат</div><div class="secret-tab" onclick="switchSecretTab('kama')">🔥 Желания</div></div>
+    <div class="secret-header"><div style="font-size:26px">🔞</div><h2>Секретная комната</h2><div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center" onclick="closeSecret()">✕</div></div>
+    <div class="secret-tabs"><div class="secret-tab active" onclick="switchSecretTab('photos')"> Фото</div><div class="secret-tab" onclick="switchSecretTab('chat')">💬 Чат</div><div class="secret-tab" onclick="switchSecretTab('kama')">🔥 Желания</div></div>
     <div class="secret-content">
       <div class="secret-panel active" id="secretPanelPhotos">
         <div class="secret-photo-btns">
@@ -410,7 +447,9 @@ let currentWishlistTab='active';
 let partnerMood=null;
 let savedSpicyValues={};
 let syncTimeout;
-const roles={artem:{name:'Артем',emoji:'👨',partner:'Сонечка',partnerEmoji:'🥰'},sonya:{name:'Сонечка',emoji:'',partner:'Артем',partnerEmoji:'😘'}};
+let heartbeatInterval;
+let notificationPermission=false;
+const roles={artem:{name:'Артем',emoji:'👨',partner:'Сонечка',partnerEmoji:''},sonya:{name:'Сонечка',emoji:'👩',partner:'Артем',partnerEmoji:'😘'}};
 let customMoods=JSON.parse(localStorage.getItem('customMoods')||'[]');
 let customSpicy=JSON.parse(localStorage.getItem('customSpicy')||'[]');
 let hiddenMoods=JSON.parse(localStorage.getItem('hiddenMoods')||'[]');
@@ -419,109 +458,990 @@ let intimacyCalendar=JSON.parse(localStorage.getItem('intimacyCalendar')||'{}');
 let kamaDB=JSON.parse(localStorage.getItem('kamaDB')||'null');
 const defaultKamaDB={'Позы':[],'Места':[],'Настроение':[],'Игры':[],'Ласки':[]};
 if(!kamaDB){kamaDB=defaultKamaDB;localStorage.setItem('kamaDB',JSON.stringify(kamaDB))}
-const defaultMoods=[{emoji:'😊',label:'Радость',id:'happy'},{emoji:'😢',label:'Грусть',id:'sad'},{emoji:'😴',label:'Усталость',id:'tired'},{emoji:'😌',label:'Спокойствие',id:'calm'},{emoji:'🤩',label:'Восторг',id:'excited'},{emoji:'🥰',label:'Любовь',id:'love'}];
+const defaultMoods=[{emoji:'😊',label:'Радость',id:'happy'},{emoji:'😢',label:'Грусть',id:'sad'},{emoji:'',label:'Усталость',id:'tired'},{emoji:'😌',label:'Спокойствие',id:'calm'},{emoji:'',label:'Восторг',id:'excited'},{emoji:'🥰',label:'Любовь',id:'love'}];
 const defaultSpicy=[{emoji:'💋',label:'Нежность',id:'tender'},{emoji:'🔥',label:'Близость',id:'close'},{emoji:'💆',label:'Массаж',id:'massage'}];
-const ideas=["Романтический ужин при свечах 🕯️","Прогулка по ночному городу 🌃","Пикник в парке 🧺","Домашний кинотеатр 🍿","Танцы при свечах 💃","Спа-день дома ","Настольные игры 🎲","Завтрак в постель 🥐","Музей или галерея 🖼️","Катание на лодке 🚣","Уютное кафе ☕","Концерт или шоу 🎤","Старый город 🏰","Велопрогулка 🚲","Фермерский рынок ","Кулинарный класс 🍳","Аквапарк 🌊","Океанариум ","Фестиваль 🎪","Совместный альбом 📸","Лесная прогулка 🌲","Звёзды ночью 🌃","Театр 🎭","Лыжи 🎿","Баня 🧖","Плейлист 🎧","Арт-выставка 🖼️","Пикник у озера ️","Коньки ⛸️","Уличная еда 🌯","Стрит-арт 🖼️","Закат на набережной 🌅","Квест 🕵️","Лошади 🐴","Вино 🍷","Фонарики ночью 🌃","Танцы 💃","Мотоцикл 🏍️","Кино под небом 🎬","Планетарий 🌌","Гончарная мастерская 🏺","Караоке 🎤","Коктейли 🍹","Сапборды 🏄","Аттракционы ","Пробежка 🏃","Рисование 🎨","Оранжерея ","Джаз 🎷","Книжный 📚","Суши 🍣","Телескоп 🔭","Фотоальбом ","Чай и медитация 🍵","Ночной пляж 🏖️","Кофейня с котиками 🐱","Кухонные танцы 💃","Горы ⛰️","Старые фильмы 🎬","Коктейли 🍸","Бильярд ","Волонтёрство 🤝"];
+const ideas=["Романтический ужин при свечах 🕯️","Прогулка по ночному городу 🌃","Пикник в парке 🧺","Домашний кинотеатр 🍿","Танцы при свечах 💃","Спа-день дома ","Настольные игры 🎲","Завтрак в постель 🥐","Музей или галерея 🖼️","Катание на лодке 🚣","Уютное кафе ☕","Концерт или шоу 🎤","Старый город 🏰","Велопрогулка 🚲","Фермерский рынок 🥬","Кулинарный класс 🍳","Аквапарк 🌊","Океанариум 🐠","Фестиваль 🎪","Совместный альбом 📸","Лесная прогулка 🌲","Звёзды ночью 🌃","Театр ","Лыжи 🎿","Баня ","Плейлист 🎧","Арт-выставка 🖼️","Пикник у озера 🏕️","Коньки ️","Уличная еда 🌯","Стрит-арт 🖼️","Закат на набережной 🌅","Квест 🕵️","Лошади 🐴","Вино 🍷","Фонарики ночью 🌃","Танцы 💃","Мотоцикл ️","Кино под небом 🎬","Планетарий 🌌","Гончарная мастерская 🏺","Караоке 🎤","Коктейли 🍹","Сапборды 🏄","Аттракционы 🎢","Пробежка 🏃","Рисование 🎨","Оранжерея 🌿","Джаз 🎷","Книжный 📚","Суши 🍣","Телескоп 🔭","Фотоальбом ","Чай и медитация 🍵","Ночной пляж 🏖️","Кофейня с котиками 🐱","Кухонные танцы 💃","Горы ️","Старые фильмы 🎬","Коктейли 🍸","Бильярд ","Волонтёрство 🤝"];
 const questions=[{text:"Что для тебя идеальная любовь?",category:"Любовь"},{text:"Какой момент в наших отношениях самый важный?",category:"Отношения"},{text:"Что ты ценишь во мне больше всего?",category:"Ценности"},{text:"О чём ты мечтаешь в глубине души?",category:"Мечты"},{text:"Что делает тебя по-настоящему счастливым?",category:"Счастье"},{text:"Какой твой самый сокровенный страх?",category:"Страхи"},{text:"Как ты представляешь наше будущее через 5 лет?",category:"Будущее"},{text:"Что для тебя значит доверие?",category:"Доверие"},{text:"Какой комплимент тебе запомнился?",category:"Комплименты"},{text:"Что ты хочешь, чтобы я знал о тебе?",category:"Откровенность"},{text:"Какое качество во мне тебе нравится?",category:"Качества"},{text:"Что ты чувствуешь, когда мы вместе?",category:"Чувства"},{text:"Что помогает тебе чувствовать себя любимым?",category:"Любовь"},{text:"Самое яркое детское воспоминание?",category:"Прошлое"},{text:"Что бы ты изменил в прошлом?",category:"Прошлое"},{text:"Кто оказал наибольшее влияние на тебя?",category:"Люди"},{text:"Твоё главное достижение?",category:"Достижения"},{text:"Совет себе 10 лет назад?",category:"Мудрость"},{text:"Что для тебя значит свобода?",category:"Ценности"},{text:"Как справляешься со стрессом?",category:"Привычки"},{text:"Что вдохновляет каждый день?",category:"Вдохновение"},{text:"Идеальный день?",category:"Мечты"},{text:"Что хочешь успеть в жизни?",category:"Цели"},{text:"Как понимаешь, что любишь?",category:"Любовь"},{text:"Быть правым или счастливым?",category:"Философия"},{text:"Момент, который прожил бы снова?",category:"Прошлое"},{text:"Что ценишь в дружбе?",category:"Отношения"},{text:"Как хочешь, чтобы запомнили?",category:"Наследие"},{text:"Что раздражает в людях?",category:"Характер"},{text:"Любимый способ проводить время?",category:"Привычки"},{text:"Настоящее богатство?",category:"Ценности"},{text:"Как понимаешь успех?",category:"Цели"},{text:"Что изменить в мире?",category:"Мечты"},{text:"Урок, усвоенный недавно?",category:"Мудрость"},{text:"Что делает отношения крепкими?",category:"Отношения"},{text:"Как выражаешь любовь?",category:"Любовь"},{text:"Что значит дом?",category:"Ценности"},{text:"Самый странный талант?",category:"Личность"},{text:"Что узнать обо мне?",category:"Откровенность"},{text:"Как провести годовщину?",category:"Мечты"},{text:"Что чувствуешь в объятиях?",category:"Чувства"},{text:"Самый романтичный момент?",category:"Отношения"},{text:"Что делать чаще?",category:"Отношения"},{text:"Представь свадьбу?",category:"Будущее"},{text:"Что значит семья?",category:"Ценности"},{text:"Как расти вместе?",category:"Будущее"},{text:"Что ценишь в нас?",category:"Отношения"},{text:"Самый ценный опыт?",category:"Опыт"},{text:"Что знать о чувствах?",category:"Откровенность"},{text:"Как поддерживать друг друга?",category:"Отношения"}];
-const achievements=[{id:'days7',icon:'🌟',title:'Первая неделя',desc:'7 дней вместе',check:()=>getDaysTogether()>=7},{id:'days30',icon:'🎉',title:'Месяц любви',desc:'30 дней вместе',check:()=>getDaysTogether()>=30},{id:'days100',icon:'💯',title:'100 дней',desc:'100 дней вместе',check:()=>getDaysTogether()>=100},{id:'days365',icon:'🎂',title:'Год вместе!',desc:'365 дней',check:()=>getDaysTogether()>=365},{id:'msg100',icon:'💬',title:'Болтуны',desc:'100 сообщений',check:()=>getMessagesCount()>=100},{id:'msg1000',icon:'📱',title:'Неразлучные',desc:'1000 сообщений',check:()=>getMessagesCount()>=1000},{id:'photo10',icon:'📸',title:'Фотографы',desc:'10 фото',check:()=>getPhotosCount()>=10},{id:'photo50',icon:'🎨',title:'Коллекционеры',desc:'50 фото',check:()=>getPhotosCount()>=50},{id:'wish1',icon:'🎁',title:'Первый подарок',desc:'1 желание исполнено',check:()=>getFulfilledWishes()>=1},{id:'wish5',icon:'🎀',title:'Даритель',desc:'5 желаний исполнено',check:()=>getFulfilledWishes()>=5}];
-const timelinePresets=[{emoji:'👋',title:'Первое знакомство'},{emoji:'☕',title:'Первое свидание'},{emoji:'💋',title:'Первый поцелуй'},{emoji:'',title:'Начало отношений'},{emoji:'😘',title:'Первая близость'},{emoji:'🏠',title:'Переехали вместе'},{emoji:'✈️',title:'Первое путешествие'},{emoji:'🎊',title:'Годовщина'},{emoji:'💍',title:'Предложение'},{emoji:'🎉',title:'Свадьба'}];
-const avatarOptions=['👨','👩','👦','👧','🧔','👱','👴','👵','👶','👸','🦸','🧙','🧟','🧜','🧝','🐱','🐶','🦊','🐼','','🐙','🦋','','🌼','🌳','','🍃','⭐','✨','','☀️','🌙','','❄️','🌈','🎀','🎊','🎭','🎪','🎯','🎳','🎮','🎱','','🥇','🥈','','🏀','🎾','','⛸️','','🏊','🚵','','💖','💗','💓','💞','💕','❣️','❤️','🧡','💛','💚','💙','🖤',''];
+const achievements=[{id:'days7',icon:'🌟',title:'Первая неделя',desc:'7 дней вместе',check:()=>getDaysTogether()>=7},{id:'days30',icon:'🎉',title:'Месяц любви',desc:'30 дней вместе',check:()=>getDaysTogether()>=30},{id:'days100',icon:'💯',title:'100 дней',desc:'100 дней вместе',check:()=>getDaysTogether()>=100},{id:'days365',icon:'🎂',title:'Год вместе!',desc:'365 дней',check:()=>getDaysTogether()>=365},{id:'msg100',icon:'',title:'Болтуны',desc:'100 сообщений',check:()=>getMessagesCount()>=100},{id:'msg1000',icon:'📱',title:'Неразлучные',desc:'1000 сообщений',check:()=>getMessagesCount()>=1000},{id:'photo10',icon:'📸',title:'Фотографы',desc:'10 фото',check:()=>getPhotosCount()>=10},{id:'photo50',icon:'🎨',title:'Коллекционеры',desc:'50 фото',check:()=>getPhotosCount()>=50},{id:'wish1',icon:'🎁',title:'Первый подарок',desc:'1 желание исполнено',check:()=>getFulfilledWishes()>=1},{id:'wish5',icon:'🎀',title:'Даритель',desc:'5 желаний исполнено',check:()=>getFulfilledWishes()>=5}];
+const timelinePresets=[{emoji:'👋',title:'Первое знакомство'},{emoji:'☕',title:'Первое свидание'},{emoji:'💋',title:'Первый поцелуй'},{emoji:'💕',title:'Начало отношений'},{emoji:'😘',title:'Первая близость'},{emoji:'🏠',title:'Переехали вместе'},{emoji:'✈️',title:'Первое путешествие'},{emoji:'🎊',title:'Годовщина'},{emoji:'💍',title:'Предложение'},{emoji:'🎉',title:'Свадьба'}];
+const avatarOptions=['👨','','👦','👧','🧔','👱','👴','👵','👶','👸','🦸','🧙','🧟','🧜','🧝','🐱','🐶','🦊','','🐯','🐙','','🌼','🌳','','⭐','✨','💫','☀️','🌙','⚡','❄️','🌈','','🎊','🎭','','🎯','🎳','','🎱','🏅','','🥈','🥉','','🎾','⛸️','🏊','🚵','','💗','💓','💞','','❣️','❤️','','💛','💚','💙','🖤','🤍'];
 let hiddenBlocks=JSON.parse(localStorage.getItem('hiddenBlocks')||'[]');
 let secretPhotos=[];
-let secretChatMessages=JSON.parse(localStorage.getItem('secretChatMessages')||'[]');
-function showSync(){const ind=document.createElement('div');ind.style.cssText='position:fixed;top:50px;right:16px;background:rgba(74,222,128,0.9);color:#fff;padding:5px 10px;border-radius:10px;font-size:10px;font-weight:600;z-index:999';ind.textContent='🔄 Sync';document.body.appendChild(ind);clearTimeout(syncTimeout);syncTimeout=setTimeout(()=>ind.remove(),1500)}
-function saveToDB(key,value){showSync();db.from('app_state').upsert({key,value}).eq('key',key).then(()=>{}).catch(e=>console.error('Sync error:',e))}
-function loadFromDB(key){return db.from('app_state').select('value').eq('key',key).single().then(({data})=>data?data.value:null).catch(()=>null)}
-function getDaysTogether(){const s=localStorage.getItem('relationshipStart');if(!s)return 0;return Math.floor((new Date()-new Date(s))/(1000*60*60*24))}
+
+function requestNotificationPermission(){
+  if('Notification' in window && Notification.permission==='default'){
+    Notification.requestPermission().then(permission=>{
+      notificationPermission=permission==='granted';
+    });
+  }
+}
+
+function showNotification(title,body){
+  if(notificationPermission && 'Notification' in window){
+    new Notification(title,{body:body,icon:''});
+  }
+  showToast(body);
+}
+
+function updateOnlineStatus(){
+  const userId=currentRole;
+  db.from('user_status').upsert({user_id:userId,last_seen:new Date().toISOString(),is_online:true}).eq('user_id',userId).then(()=>{}).catch(e=>console.error('Status error:',e));
+}
+
+function checkPartnerStatus(){
+  const partnerRole=currentRole==='artem'?'sonya':'artem';
+  db.from('user_status').select('*').eq('user_id',partnerRole).single().then(({data})=>{
+    if(data){
+      const lastSeen=new Date(data.last_seen);
+      const now=new Date();
+      const diffMinutes=(now-lastSeen)/1000/60;
+      const statusEl=document.getElementById('headerStatus');
+      if(diffMinutes<2 && data.is_online){
+        statusEl.textContent='В сети 💚';
+        statusEl.style.color='#4ade80';
+      }else{
+        statusEl.textContent='Был(а) недавно';
+        statusEl.style.color='var(--t2)';
+      }
+    }
+  }).catch(()=>{});
+}
+
+function showSync(){
+  const ind=document.createElement('div');
+  ind.style.cssText='position:fixed;top:50px;right:16px;background:rgba(74,222,128,0.9);color:#fff;padding:5px 10px;border-radius:10px;font-size:10px;font-weight:600;z-index:999';
+  ind.textContent='🔄 Sync';
+  document.body.appendChild(ind);
+  clearTimeout(syncTimeout);
+  syncTimeout=setTimeout(()=>ind.remove(),1500);
+}
+
+function saveToDB(key,value){
+  showSync();
+  db.from('app_state').upsert({key,value}).eq('key',key).then(()=>{}).catch(e=>console.error('Sync error:',e));
+}
+
+function loadFromDB(key){
+  return db.from('app_state').select('value').eq('key',key).single().then(({data})=>data?data.value:null).catch(()=>null);
+}
+
+function getDaysTogether(){
+  const s=localStorage.getItem('relationshipStart');
+  if(!s)return 0;
+  return Math.floor((new Date()-new Date(s))/(1000*60*60*24));
+}
+
 function getMessagesCount(){return parseInt(localStorage.getItem('msgCount')||'0')}
 function getPhotosCount(){return parseInt(localStorage.getItem('photosCount')||'0')}
 function getFulfilledWishes(){const items=JSON.parse(localStorage.getItem('wishlist')||'[]');return items.filter(w=>w.fulfilled).length}
-function switchTab(tab){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.tab-item').forEach(t=>t.classList.remove('active'));document.getElementById('screen-'+tab).classList.add('active');const tabs=['home','feelings','camera','chat','us','profile'];const idx=tabs.indexOf(tab);if(idx!==-1)document.querySelectorAll('.tab-item')[idx].classList.add('active');if(tab==='chat')loadMessages();if(tab==='home')loadPartnerMood();if(tab==='us'){updateStats();renderCalendar();loadAllData();renderWishlist();renderTimeline();applyBlockVisibility()}if(tab==='feelings'){renderMoods();renderSpicy();loadSavedSpicyValues();renderSpicyPartner()}if(tab==='profile')updateProfile()}
-function selectRole(role){currentRole=role;localStorage.setItem('coupleAppRole',role);const data=roles[role];document.getElementById('headerName').textContent=data.partner;document.getElementById('headerAvatar').textContent=data.partnerEmoji;document.getElementById('profileName').textContent=data.name;document.getElementById('profileAvatar').textContent=data.emoji;updateLetterFooter();document.getElementById('roleSelect').classList.add('hidden');showToast('Привет, '+data.name+'!');loadAllData();updateStats()}
-function updateLetterFooter(){const data=roles[currentRole];document.getElementById('letterFooter').textContent='С любовью, '+data.name+' 💕'}
-function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
-function updateStats(){document.getElementById('statDays').textContent=getDaysTogether();document.getElementById('statMessages').textContent=getMessagesCount();document.getElementById('statPhotos').textContent=getPhotosCount()}
-function updateProfile(){const data=roles[currentRole];document.getElementById('profileName').textContent=data.name;document.getElementById('profileAvatar').textContent=data.emoji}
-function loadAllData(){const partnerRole=currentRole==='artem'?'sonya':'artem';loadFromDB('wishlist').then(wishlist=>{if(wishlist){localStorage.setItem('wishlist',JSON.stringify(wishlist));renderWishlist()}});loadFromDB('timeline').then(timeline=>{if(timeline){localStorage.setItem('timelineEvents',JSON.stringify(timeline));renderTimeline()}});loadFromDB('calendar').then(calendar=>{if(calendar){intimacyCalendar=calendar;localStorage.setItem('intimacyCalendar',JSON.stringify(calendar));renderCalendar()}});loadFromDB('note_'+partnerRole).then(partnerNote=>{if(partnerNote){document.getElementById('letterContent').textContent=partnerNote;document.getElementById('letterContent').classList.remove('empty')}});loadFromDB('lastPhoto_'+partnerRole).then(photo=>{if(photo){document.getElementById('lastPhotoFrame').innerHTML='<img src="'+photo+'" style="width:100%;height:100%;object-fit:cover">';document.getElementById('lastPhotoCaption').textContent='От партнёра 💕'}});loadFromDB('spicy_'+partnerRole).then(spicy=>{if(spicy){localStorage.setItem('spicyValues_'+partnerRole,JSON.stringify(spicy));if(document.getElementById('screen-feelings').classList.contains('active'))renderSpicyPartner()}})}
-function loadPartnerMood(){const partnerRole=currentRole==='artem'?'sonya':'artem';loadFromDB('moods_'+partnerRole).then(moods=>{if(moods&&moods.length>0){partnerMood=moods[moods.length-1];document.getElementById('partnerMoodEmoji').textContent=partnerMood.emoji;document.getElementById('partnerMoodLabel').textContent=partnerMood.label;document.getElementById('partnerMoodDesc').textContent='Выбрано недавно';document.getElementById('moodTime').textContent='недавно'}else{document.getElementById('partnerMoodEmoji').textContent='💭';document.getElementById('partnerMoodLabel').textContent='Ещё не выбрано';document.getElementById('partnerMoodDesc').textContent='Партнёр пока не выбрал настроение';document.getElementById('moodTime').textContent='—'}})}
-function loadMessages(){const container=document.getElementById('chatMessages');db.from('messages').select('*').order('created_at',{ascending:true}).limit(50).then(({data,error})=>{if(error){container.innerHTML='<div style="color:red;text-align:center;padding:20px">Ошибка БД</div>';return}container.innerHTML='';if(!data||data.length===0){container.innerHTML='<div style="text-align:center;color:var(--t3);margin-top:60px"><div style="font-size:64px;opacity:0.5;margin-bottom:16px">💬</div><div>Начните переписку<br>со своей половинкой ❤️</div></div>';return}data.forEach(msg=>{const div=document.createElement('div');div.className='message '+(msg.sender===currentRole?'sent':'received');const time=new Date(msg.created_at).toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});div.innerHTML=msg.text+'<div class="message-time">'+time+'</div>';container.appendChild(div)});container.scrollTop=container.scrollHeight})}
-function sendMessage(){const input=document.getElementById('chatInput');const text=input.value.trim();if(!text)return;const btn=document.querySelector('.send-btn');btn.style.opacity='0.5';db.from('messages').insert([{sender:currentRole,text}]).then(({error})=>{if(error){showToast('Ошибка: '+error.message)}else{input.value='';const cnt=getMessagesCount()+1;localStorage.setItem('msgCount',cnt.toString());updateStats()}btn.style.opacity='1'})}
-function loadSecretChat(){const container=document.getElementById('secretChatMessages');if(secretChatMessages.length===0){container.innerHTML='<div style="text-align:center;color:var(--t3);padding:40px"><div style="font-size:48px;opacity:0.5;margin-bottom:12px">💬</div><div>Секретный чат</div></div>';return}container.innerHTML='';secretChatMessages.forEach(msg=>{const div=document.createElement('div');div.className='message '+(msg.sender===currentRole?'sent':'received');div.textContent=msg.text;container.appendChild(div)});container.scrollTop=container.scrollHeight}
-function sendSecretMessage(){const input=document.getElementById('secretChatInput');const text=input.value.trim();if(!text)return;secretChatMessages.push({sender:currentRole,text,time:new Date().toISOString()});localStorage.setItem('secretChatMessages',JSON.stringify(secretChatMessages));input.value='';loadSecretChat()}
-function renderMoods(){const grid=document.getElementById('moodGrid');grid.innerHTML='';const visibleDefault=defaultMoods.filter(m=>!hiddenMoods.includes(m.id));const allMoods=[...visibleDefault,...customMoods];allMoods.forEach(m=>{const btn=document.createElement('div');btn.className='mood-btn';btn.innerHTML='<button class="mood-delete" onclick="deleteMood(\''+m.id+'\',event)">✕</button><div class="mood-emoji">'+m.emoji+'</div><div class="mood-label">'+m.label+'</div>';btn.onclick=(e)=>{if(e.target.classList.contains('mood-delete'))return;document.querySelectorAll('.mood-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const all=JSON.parse(localStorage.getItem('moods_'+currentRole)||'[]');all.push(m);localStorage.setItem('moods_'+currentRole,JSON.stringify(all));saveToDB('moods_'+currentRole,all);showToast(m.emoji+' '+m.label)};grid.appendChild(btn)})}
-function deleteMood(id,event){if(event){event.stopPropagation();event.preventDefault()}if(defaultMoods.some(m=>m.id===id)){if(!hiddenMoods.includes(id)){hiddenMoods.push(id);localStorage.setItem('hiddenMoods',JSON.stringify(hiddenMoods))}}else{customMoods=customMoods.filter(m=>m.id!==id);localStorage.setItem('customMoods',JSON.stringify(customMoods))}renderMoods();showToast('Удалено')}
-function renderSpicy(){const container=document.getElementById('spicySliders');container.innerHTML='';const visibleDefault=defaultSpicy.filter(s=>!hiddenSpicy.includes(s.id));const allSpicy=[...visibleDefault,...customSpicy];allSpicy.forEach((s,i)=>{const div=document.createElement('div');div.className='slider-item';const savedVal=savedSpicyValues[s.id]||5;div.innerHTML='<button class="spicy-delete" onclick="deleteSpicy(\''+s.id+'\',event)">✕</button><div class="slider-header"><span class="slider-label">'+s.emoji+' '+s.label+'</span><span class="slider-value" id="spicyVal'+i+'">'+savedVal+'/10</span></div><input type="range" class="spicy-slider" min="1" max="10" value="'+savedVal+'" oninput="document.getElementById(\'spicyVal'+i+'\').textContent=this.value+\'/10\';savedSpicyValues[\''+s.id+'\']=parseInt(this.value)">';container.appendChild(div)})}
-function loadSavedSpicyValues(){const saved=JSON.parse(localStorage.getItem('spicyValues_'+currentRole)||'{}');savedSpicyValues=saved}
-function renderSpicyPartner(){const container=document.getElementById('spicySlidersPartner');container.innerHTML='';const partnerRole=currentRole==='artem'?'sonya':'artem';const partnerSpicy=JSON.parse(localStorage.getItem('spicyValues_'+partnerRole)||'[]');if(!partnerSpicy||partnerSpicy.length===0){container.innerHTML='<div style="text-align:center;color:var(--t3);padding:20px;font-size:13px">Партнёр ещё не поделился желаниями</div>';return}partnerSpicy.forEach((s)=>{const div=document.createElement('div');div.className='slider-item';div.innerHTML='<div class="slider-header"><span class="slider-label">'+s.emoji+' '+s.label+'</span><span class="slider-value">'+s.value+'/10</span></div><input type="range" class="spicy-slider" min="1" max="10" value="'+s.value+'" disabled>';container.appendChild(div)})}
-function deleteSpicy(id,event){if(event){event.stopPropagation();event.preventDefault()}if(defaultSpicy.some(s=>s.id===id)){if(!hiddenSpicy.includes(id)){hiddenSpicy.push(id);localStorage.setItem('hiddenSpicy',JSON.stringify(hiddenSpicy))}}else{customSpicy=customSpicy.filter(s=>s.id!==id);localStorage.setItem('customSpicy',JSON.stringify(customSpicy))}renderSpicy();showToast('Удалено')}
-function sendDesires(){const values=[];document.querySelectorAll('#spicySliders .slider-item').forEach((div)=>{const slider=div.querySelector('.spicy-slider');const label=div.querySelector('.slider-label').textContent;const val=parseInt(slider.value);values.push({emoji:label.split(' ')[0],label:label.split(' ').slice(1).join(' '),value:val})});localStorage.setItem('spicyValues_'+currentRole,JSON.stringify(values));saveToDB('spicy_'+currentRole,values);showToast(' Желания отправлены партнёру!')}
-function openMoodSettings(){document.getElementById('sheetContent').innerHTML='<div class="sheet-title">✨ Новое настроение</div><label class="sheet-label">Название</label><input type="text" class="sheet-input" id="moodNameInput" placeholder="Например: Вдохновлён"><label class="sheet-label">Эмодзи</label><input type="text" class="sheet-input" id="moodEmojiInput" placeholder="💫" maxlength="4"><div class="sheet-actions"><button class="sheet-btn sheet-btn-secondary" onclick="closeModal()">Отмена</button><button class="sheet-btn sheet-btn-primary" onclick="addCustomMood()">Добавить</button></div>';document.getElementById('modal').classList.add('active')}
-function addCustomMood(){const name=document.getElementById('moodNameInput').value.trim();const emoji=document.getElementById('moodEmojiInput').value.trim()||'💫';if(!name){showToast('Введи название');return}customMoods.push({emoji,label:name,id:'custom_'+Date.now()});localStorage.setItem('customMoods',JSON.stringify(customMoods));closeModal();renderMoods();showToast('Настроение добавлено! ✨')}
-function openSpicySettings(){document.getElementById('sheetContent').innerHTML='<div class="sheet-title"> Новое желание</div><label class="sheet-label">Название</label><input type="text" class="sheet-input" id="spicyNameInput" placeholder="Например: Танцы до утра"><label class="sheet-label">Эмодзи</label><input type="text" class="sheet-input" id="spicyEmojiInput" placeholder="💖" maxlength="4"><div class="sheet-actions"><button class="sheet-btn sheet-btn-secondary" onclick="closeModal()">Отмена</button><button class="sheet-btn sheet-btn-primary" onclick="addCustomSpicy()">Добавить</button></div>';document.getElementById('modal').classList.add('active')}
-function addCustomSpicy(){const name=document.getElementById('spicyNameInput').value.trim();const emoji=document.getElementById('spicyEmojiInput').value.trim()||'💖';if(!name){showToast('Введи название');return}customSpicy.push({emoji,label:name,id:'custom_'+Date.now()});localStorage.setItem('customSpicy',JSON.stringify(customSpicy));closeModal();renderSpicy();showToast('Желание добавлено! 🔥')}
-function renderCalendar(){const now=new Date();const year=now.getFullYear();const month=now.getMonth();const days=new Date(year,month+1,0).getDate();const firstDay=new Date(year,month,1).getDay();const offset=firstDay===0?6:firstDay-1;document.getElementById('calendarMonth').textContent=now.toLocaleDateString('ru-RU',{month:'long',year:'numeric'});const grid=document.getElementById('calendarGrid');grid.innerHTML='';['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].forEach(d=>{const div=document.createElement('div');div.className='flo-cal-dow';div.textContent=d;grid.appendChild(div)});for(let i=0;i<offset;i++){const div=document.createElement('div');div.className='flo-cal-day';grid.appendChild(div)}const today=now.getDate();for(let i=1;i<=days;i++){const dateKey=year+'-'+month+'-'+i;const div=document.createElement('div');div.className='flo-cal-day';if(i===today)div.classList.add('today');const events=intimacyCalendar[dateKey]||[];if(events.length>0)div.classList.add('has-event');div.innerHTML='<div>'+i+'</div><div class="flo-cal-dots">'+events.map(e=>'<div class="flo-cal-dot '+e+'"></div>').join('')+'</div>';div.onclick=()=>toggleFloDay(dateKey);grid.appendChild(div)}}
-function toggleFloDay(dateKey){const types=['tender','passion','special','experimental'];const current=intimacyCalendar[dateKey]||[];let nextType=null;if(current.length===0){nextType=types[0]}else{const lastIdx=types.indexOf(current[current.length-1]);if(lastIdx<types.length-1){nextType=types[lastIdx+1]}else{nextType=null}}if(nextType===null){intimacyCalendar[dateKey]=[]}else{intimacyCalendar[dateKey]=[...current,nextType]}localStorage.setItem('intimacyCalendar',JSON.stringify(intimacyCalendar));saveToDB('calendar',intimacyCalendar);renderCalendar()}
-function switchWishlistTab(tab,el){currentWishlistTab=tab;document.querySelectorAll('.wishlist-tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');renderWishlist()}
-function renderWishlist(){const items=JSON.parse(localStorage.getItem('wishlist')||'[]');const container=document.getElementById('wishlistContainer');container.innerHTML='';let filtered=[];if(currentWishlistTab==='active'){filtered=items.filter(item=>!item.fulfilled&&!item.archived)}else if(currentWishlistTab==='fulfilled'){filtered=items.filter(item=>item.fulfilled)}else{filtered=items.filter(item=>item.archived)}if(filtered.length===0){container.innerHTML='<div style="text-align:center;color:var(--t3);padding:30px">Нет желаний в этой категории</div>';return}filtered.forEach((item)=>{const realIdx=items.indexOf(item);const div=document.createElement('div');div.className='wishlist-item'+(item.fulfilled?' fulfilled':'');const addedByText=item.addedBy||'Неизвестно';const addedByColor=item.addedByRole==='artem'?'#a855f7':'#ec4899';let html='<div class="wishlist-header"><div class="wishlist-text">'+item.text+'</div><div class="wishlist-actions">';if(!item.fulfilled&&currentWishlistTab==='active')html+='<button class="wishlist-btn wishlist-btn-fulfill" onclick="fulfillWish('+realIdx+')">✓</button>';if(currentWishlistTab==='active'&&!item.archived)html+='<button class="wishlist-btn" onclick="archiveWish('+realIdx+')" style="background:rgba(100,100,100,0.7)">📦</button>';if(currentWishlistTab==='archived')html+='<button class="wishlist-btn wishlist-btn-delete" onclick="deleteWish('+realIdx+')">✕</button>';if(currentWishlistTab==='fulfilled')html+='<button class="wishlist-btn wishlist-btn-delete" onclick="deleteWish('+realIdx+')">✕</button>';html+='</div></div>';html+='<div style="margin-top:8px;font-size:11px;color:'+addedByColor+'">Добавил: '+addedByText+'</div>';if(item.url)html+='<a href="'+item.url+'" target="_blank" class="wishlist-link">🔗 '+item.url+'</a>';if(item.fulfilled)html+='<div style="margin-top:8px"><span class="wishlist-badge">✓ Исполнено</span></div>';div.innerHTML=html;container.appendChild(div)})}
-function addWishlistItem(){const textInput=document.getElementById('wishlistInput');const urlInput=document.getElementById('wishlistUrlInput');const text=textInput.value.trim();const url=urlInput.value.trim();if(!text){showToast('Введи желание');return}const items=JSON.parse(localStorage.getItem('wishlist')||'[]');items.push({text,url:url||null,fulfilled:false,addedBy:roles[currentRole].name,addedByRole:currentRole,addedAt:new Date().toISOString(),archived:false});localStorage.setItem('wishlist',JSON.stringify(items));saveToDB('wishlist',items);textInput.value='';urlInput.value='';renderWishlist();showToast('Добавлено! ')}
-function fulfillWish(i){const items=JSON.parse(localStorage.getItem('wishlist')||'[]');items[i].fulfilled=true;items[i].fulfilledAt=new Date().toISOString();localStorage.setItem('wishlist',JSON.stringify(items));saveToDB('wishlist',items);renderWishlist();showToast('Исполнено! ')}
-function archiveWish(i){const items=JSON.parse(localStorage.getItem('wishlist')||'[]');items[i].archived=true;localStorage.setItem('wishlist',JSON.stringify(items));saveToDB('wishlist',items);renderWishlist();showToast('Архивировано')}
-function deleteWish(i){if(!confirm('Удалить желание?'))return;const items=JSON.parse(localStorage.getItem('wishlist')||'[]');items.splice(i,1);localStorage.setItem('wishlist',JSON.stringify(items));saveToDB('wishlist',items);renderWishlist()}
-function renderTimeline(){const events=JSON.parse(localStorage.getItem('timelineEvents')||'[]');const container=document.getElementById('timelineContainer');if(events.length===0){container.innerHTML='<div style="text-align:center;color:var(--t3);padding:40px"><div style="font-size:48px;opacity:0.5;margin-bottom:12px">📖</div><div>Добавьте важные моменты</div></div>';return}container.innerHTML='';events.sort((a,b)=>new Date(b.date)-new Date(a.date)).forEach((ev,i)=>{const div=document.createElement('div');div.className='timeline-item';div.innerHTML='<button class="timeline-delete" onclick="deleteTimelineEvent('+i+')">×</button><div class="timeline-date">'+new Date(ev.date).toLocaleDateString('ru-RU')+'</div><div class="timeline-title">'+ev.emoji+' '+ev.title+'</div>';container.appendChild(div)})}
-function openTimelineSheet(){let html='<div class="sheet-title">📖 Новое событие</div><div class="preset-grid">';timelinePresets.forEach(p=>{html+='<button class="preset-btn" onclick="fillPreset(\''+p.emoji+'\',\''+p.title+'\')">'+p.emoji+' '+p.title+'</button>'});html+='</div><label class="sheet-label">Или своё событие</label><input type="text" class="sheet-input" id="timelineEmoji" placeholder="Эмодзи " maxlength="4"><input type="text" class="sheet-input" id="timelineTitle" placeholder="Название события"><label class="sheet-label">Дата</label><input type="date" class="sheet-input" id="timelineDate" value="'+new Date().toISOString().split('T')[0]+'"><div class="sheet-actions"><button class="sheet-btn sheet-btn-secondary" onclick="closeModal()">Отмена</button><button class="sheet-btn sheet-btn-primary" onclick="addTimelineEvent()">Добавить</button></div>';document.getElementById('sheetContent').innerHTML=html;document.getElementById('modal').classList.add('active')}
-function fillPreset(emoji,title){document.getElementById('timelineEmoji').value=emoji;document.getElementById('timelineTitle').value=title}
-function addTimelineEvent(){const emoji=document.getElementById('timelineEmoji').value.trim()||'✨';const title=document.getElementById('timelineTitle').value.trim();const date=document.getElementById('timelineDate').value;if(!title){showToast('Введи название');return}if(!date){showToast('Выбери дату');return}const events=JSON.parse(localStorage.getItem('timelineEvents')||'[]');events.push({emoji,title,date});localStorage.setItem('timelineEvents',JSON.stringify(events));saveToDB('timeline',events);closeModal();renderTimeline();showToast('Событие добавлено! ')}
-function deleteTimelineEvent(i){if(!confirm('Удалить событие?'))return;const events=JSON.parse(localStorage.getItem('timelineEvents')||'[]');events.splice(i,1);localStorage.setItem('timelineEvents',JSON.stringify(events));saveToDB('timeline',events);renderTimeline()}
-function openAchievements(){const container=document.getElementById('achievementsList');container.innerHTML='';achievements.forEach(a=>{const unlocked=a.check();const div=document.createElement('div');div.style.cssText='background:'+((unlocked?'linear-gradient(135deg, rgba(168,85,247,0.15), rgba(236,72,153,0.1))':'var(--card)'))+';border:1px solid '+((unlocked?'rgba(168,85,247,0.4)':'var(--card-b)'))+';border-radius:16px;padding:16px 20px;display:flex;align-items:center;gap:16px;width:100%;max-width:340px;opacity:'+(unlocked?'1':'0.6')+';transition:all 0.3s;';div.innerHTML='<div style="font-size:28px;width:32px;text-align:center;flex-shrink:0">'+a.icon+'</div><div style="flex:1;min-width:0"><div style="color:var(--t1);font-size:14px;font-weight:700;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+a.title+'</div><div style="color:var(--t2);font-size:12px">'+a.desc+'</div></div>'+(unlocked?'<div style="font-size:18px;flex-shrink:0">✅</div>':'<div style="font-size:18px;flex-shrink:0;opacity:0.3">🔒</div>');container.appendChild(div)});document.getElementById('achievementsModal').classList.add('active')}
+
+function switchTab(tab){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-item').forEach(t=>t.classList.remove('active'));
+  document.getElementById('screen-'+tab).classList.add('active');
+  const tabs=['home','feelings','camera','chat','us','profile'];
+  const idx=tabs.indexOf(tab);
+  if(idx!==-1)document.querySelectorAll('.tab-item')[idx].classList.add('active');
+  if(tab==='chat')loadMessages();
+  if(tab==='home')loadPartnerMood();
+  if(tab==='us'){updateStats();renderCalendar();loadAllData();renderWishlist();renderTimeline();applyBlockVisibility()}
+  if(tab==='feelings'){renderMoods();renderSpicy();loadSavedSpicyValues();renderSpicyPartner()}
+  if(tab==='profile')updateProfile();
+}
+
+function selectRole(role){
+  currentRole=role;
+  localStorage.setItem('coupleAppRole',role);
+  const data=roles[role];
+  document.getElementById('headerName').textContent=data.partner;
+  document.getElementById('headerAvatar').textContent=data.partnerEmoji;
+  document.getElementById('profileName').textContent=data.name;
+  document.getElementById('profileAvatar').textContent=data.emoji;
+  updateLetterFooter();
+  document.getElementById('roleSelect').classList.add('hidden');
+  showToast('Привет, '+data.name+'!');
+  loadAllData();
+  updateStats();
+  
+  updateOnlineStatus();
+  heartbeatInterval=setInterval(updateOnlineStatus,30000);
+  checkPartnerStatus();
+  setInterval(checkPartnerStatus,15000);
+  requestNotificationPermission();
+}
+
+function updateLetterFooter(){
+  const data=roles[currentRole];
+  document.getElementById('letterFooter').textContent='С любовью, '+data.name+' ';
+}
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+function updateStats(){
+  document.getElementById('statDays').textContent=getDaysTogether();
+  document.getElementById('statMessages').textContent=getMessagesCount();
+  document.getElementById('statPhotos').textContent=getPhotosCount();
+}
+
+function updateProfile(){
+  const data=roles[currentRole];
+  document.getElementById('profileName').textContent=data.name;
+  document.getElementById('profileAvatar').textContent=data.emoji;
+}
+
+function loadAllData(){
+  const partnerRole=currentRole==='artem'?'sonya':'artem';
+  loadFromDB('wishlist').then(wishlist=>{if(wishlist){localStorage.setItem('wishlist',JSON.stringify(wishlist));renderWishlist()}});
+  loadFromDB('timeline').then(timeline=>{if(timeline){localStorage.setItem('timelineEvents',JSON.stringify(timeline));renderTimeline()}});
+  loadFromDB('calendar').then(calendar=>{if(calendar){intimacyCalendar=calendar;localStorage.setItem('intimacyCalendar',JSON.stringify(calendar));renderCalendar()}});
+  loadFromDB('note_'+partnerRole).then(partnerNote=>{if(partnerNote){document.getElementById('letterContent').textContent=partnerNote;document.getElementById('letterContent').classList.remove('empty')}});
+  loadFromDB('lastPhoto_'+partnerRole).then(photo=>{if(photo){document.getElementById('lastPhotoFrame').innerHTML='<img src="'+photo+'" style="width:100%;height:100%;object-fit:cover">';document.getElementById('lastPhotoCaption').textContent='От партнёра 💕'}});
+  loadFromDB('spicy_'+partnerRole).then(spicy=>{if(spicy){localStorage.setItem('spicyValues_'+partnerRole,JSON.stringify(spicy));if(document.getElementById('screen-feelings').classList.contains('active'))renderSpicyPartner()}});
+}
+
+function loadPartnerMood(){
+  const partnerRole=currentRole==='artem'?'sonya':'artem';
+  loadFromDB('moods_'+partnerRole).then(moods=>{
+    if(moods&&moods.length>0){
+      partnerMood=moods[moods.length-1];
+      document.getElementById('partnerMoodEmoji').textContent=partnerMood.emoji;
+      document.getElementById('partnerMoodLabel').textContent=partnerMood.label;
+      document.getElementById('partnerMoodDesc').textContent='Выбрано недавно';
+      document.getElementById('moodTime').textContent='недавно';
+    }else{
+      document.getElementById('partnerMoodEmoji').textContent='💭';
+      document.getElementById('partnerMoodLabel').textContent='Ещё не выбрано';
+      document.getElementById('partnerMoodDesc').textContent='Партнёр пока не выбрал настроение';
+      document.getElementById('moodTime').textContent='—';
+    }
+  });
+}
+
+function loadMessages(){
+  const container=document.getElementById('chatMessages');
+  db.from('messages').select('*').order('created_at',{ascending:true}).limit(50).then(({data,error})=>{
+    if(error){container.innerHTML='<div style="color:red;text-align:center;padding:20px">Ошибка БД</div>';return}
+    container.innerHTML='';
+    if(!data||data.length===0){
+      container.innerHTML='<div style="text-align:center;color:var(--t3);margin-top:60px"><div style="font-size:64px;opacity:0.5;margin-bottom:16px">💬</div><div>Начните переписку<br>со своей половинкой ❤️</div></div>';
+      return;
+    }
+    data.forEach(msg=>{
+      const div=document.createElement('div');
+      div.className='message '+(msg.sender===currentRole?'sent':'received');
+      const time=new Date(msg.created_at).toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});
+      div.innerHTML=msg.text+'<div class="message-time">'+time+'</div>';
+      container.appendChild(div);
+    });
+    container.scrollTop=container.scrollHeight;
+  });
+}
+
+function sendMessage(){
+  const input=document.getElementById('chatInput');
+  const text=input.value.trim();
+  if(!text)return;
+  const btn=document.querySelector('.send-btn');
+  btn.style.opacity='0.5';
+  db.from('messages').insert([{sender:currentRole,text}]).then(({error})=>{
+    if(error){showToast('Ошибка: '+error.message)}
+    else{
+      input.value='';
+      const cnt=getMessagesCount()+1;
+      localStorage.setItem('msgCount',cnt.toString());
+      updateStats();
+      const partnerRole=currentRole==='artem'?'sonya':'artem';
+      showNotification('💬 Новое сообщение','У тебя новое сообщение в чате');
+    }
+    btn.style.opacity='1';
+  });
+}
+
+function loadSecretChat(){
+  const container=document.getElementById('secretChatMessages');
+  db.from('secret_messages').select('*').order('created_at',{ascending:true}).limit(50).then(({data,error})=>{
+    if(error)return;
+    container.innerHTML='';
+    if(!data||data.length===0){
+      container.innerHTML='<div style="text-align:center;color:var(--t3);padding:40px"><div style="font-size:48px;opacity:0.5;margin-bottom:12px">💬</div><div>Секретный чат</div></div>';
+      return;
+    }
+    data.forEach(msg=>{
+      const div=document.createElement('div');
+      div.className='message '+(msg.sender===currentRole?'sent':'received');
+      div.textContent=msg.text;
+      container.appendChild(div);
+    });
+    container.scrollTop=container.scrollHeight;
+  });
+}
+
+function sendSecretMessage(){
+  const input=document.getElementById('secretChatInput');
+  const text=input.value.trim();
+  if(!text)return;
+  db.from('secret_messages').insert([{sender:currentRole,text}]).then(({error})=>{
+    if(!error){
+      input.value='';
+      showNotification('🔞 Новое сообщение','У тебя новое сообщение в секретном чате');
+    }
+  });
+}
+
+function renderMoods(){
+  const grid=document.getElementById('moodGrid');
+  grid.innerHTML='';
+  const visibleDefault=defaultMoods.filter(m=>!hiddenMoods.includes(m.id));
+  const allMoods=[...visibleDefault,...customMoods];
+  allMoods.forEach(m=>{
+    const btn=document.createElement('div');
+    btn.className='mood-btn';
+    btn.innerHTML='<button class="mood-delete" onclick="deleteMood(\''+m.id+'\',event)">✕</button><div class="mood-emoji">'+m.emoji+'</div><div class="mood-label">'+m.label+'</div>';
+    btn.onclick=(e)=>{
+      if(e.target.classList.contains('mood-delete'))return;
+      document.querySelectorAll('.mood-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const all=JSON.parse(localStorage.getItem('moods_'+currentRole)||'[]');
+      all.push(m);
+      localStorage.setItem('moods_'+currentRole,JSON.stringify(all));
+      saveToDB('moods_'+currentRole,all);
+      showToast(m.emoji+' '+m.label);
+    };
+    grid.appendChild(btn);
+  });
+}
+
+function deleteMood(id,event){
+  if(event){event.stopPropagation();event.preventDefault()}
+  if(defaultMoods.some(m=>m.id===id)){
+    if(!hiddenMoods.includes(id)){hiddenMoods.push(id);localStorage.setItem('hiddenMoods',JSON.stringify(hiddenMoods))}
+  }else{
+    customMoods=customMoods.filter(m=>m.id!==id);
+    localStorage.setItem('customMoods',JSON.stringify(customMoods));
+  }
+  renderMoods();
+  showToast('Удалено');
+}
+
+function renderSpicy(){
+  const container=document.getElementById('spicySliders');
+  container.innerHTML='';
+  const visibleDefault=defaultSpicy.filter(s=>!hiddenSpicy.includes(s.id));
+  const allSpicy=[...visibleDefault,...customSpicy];
+  allSpicy.forEach((s,i)=>{
+    const div=document.createElement('div');
+    div.className='slider-item';
+    const savedVal=savedSpicyValues[s.id]||5;
+    div.innerHTML='<button class="spicy-delete" onclick="deleteSpicy(\''+s.id+'\',event)">✕</button><div class="slider-header"><span class="slider-label">'+s.emoji+' '+s.label+'</span><span class="slider-value" id="spicyVal'+i+'">'+savedVal+'/10</span></div><input type="range" class="spicy-slider" min="1" max="10" value="'+savedVal+'" oninput="document.getElementById(\'spicyVal'+i+'\').textContent=this.value+\'/10\';savedSpicyValues[\''+s.id+'\']=parseInt(this.value)">';
+    container.appendChild(div);
+  });
+}
+
+function loadSavedSpicyValues(){
+  const saved=JSON.parse(localStorage.getItem('spicyValues_'+currentRole)||'{}');
+  savedSpicyValues=saved;
+}
+
+function renderSpicyPartner(){
+  const container=document.getElementById('spicySlidersPartner');
+  container.innerHTML='';
+  const partnerRole=currentRole==='artem'?'sonya':'artem';
+  const partnerSpicy=JSON.parse(localStorage.getItem('spicyValues_'+partnerRole)||'[]');
+  if(!partnerSpicy||partnerSpicy.length===0){
+    container.innerHTML='<div style="text-align:center;color:var(--t3);padding:20px;font-size:13px">Партнёр ещё не поделился желаниями</div>';
+    return;
+  }
+  partnerSpicy.forEach((s)=>{
+    const div=document.createElement('div');
+    div.className='slider-item';
+    div.innerHTML='<div class="slider-header"><span class="slider-label">'+s.emoji+' '+s.label+'</span><span class="slider-value">'+s.value+'/10</span></div><input type="range" class="spicy-slider" min="1" max="10" value="'+s.value+'" disabled>';
+    container.appendChild(div);
+  });
+}
+
+function deleteSpicy(id,event){
+  if(event){event.stopPropagation();event.preventDefault()}
+  if(defaultSpicy.some(s=>s.id===id)){
+    if(!hiddenSpicy.includes(id)){hiddenSpicy.push(id);localStorage.setItem('hiddenSpicy',JSON.stringify(hiddenSpicy))}
+  }else{
+    customSpicy=customSpicy.filter(s=>s.id!==id);
+    localStorage.setItem('customSpicy',JSON.stringify(customSpicy));
+  }
+  renderSpicy();
+  showToast('Удалено');
+}
+
+function sendDesires(){
+  const values=[];
+  document.querySelectorAll('#spicySliders .slider-item').forEach((div)=>{
+    const slider=div.querySelector('.spicy-slider');
+    const label=div.querySelector('.slider-label').textContent;
+    const val=parseInt(slider.value);
+    values.push({emoji:label.split(' ')[0],label:label.split(' ').slice(1).join(' '),value:val});
+  });
+  localStorage.setItem('spicyValues_'+currentRole,JSON.stringify(savedSpicyValues));
+  saveToDB('spicy_'+currentRole,values);
+  showToast(' Желания отправлены партнёру!');
+}
+
+function openMoodSettings(){
+  document.getElementById('sheetContent').innerHTML='<div class="sheet-title">✨ Новое настроение</div><label class="sheet-label">Название</label><input type="text" class="sheet-input" id="moodNameInput" placeholder="Например: Вдохновлён"><label class="sheet-label">Эмодзи</label><input type="text" class="sheet-input" id="moodEmojiInput" placeholder="💫" maxlength="4"><div class="sheet-actions"><button class="sheet-btn sheet-btn-secondary" onclick="closeModal()">Отмена</button><button class="sheet-btn sheet-btn-primary" onclick="addCustomMood()">Добавить</button></div>';
+  document.getElementById('modal').classList.add('active');
+}
+
+function addCustomMood(){
+  const name=document.getElementById('moodNameInput').value.trim();
+  const emoji=document.getElementById('moodEmojiInput').value.trim()||'💫';
+  if(!name){showToast('Введи название');return}
+  customMoods.push({emoji,label:name,id:'custom_'+Date.now()});
+  localStorage.setItem('customMoods',JSON.stringify(customMoods));
+  closeModal();
+  renderMoods();
+  showToast('Настроение добавлено! ✨');
+}
+
+function openSpicySettings(){
+  document.getElementById('sheetContent').innerHTML='<div class="sheet-title">🔥 Новое желание</div><label class="sheet-label">Название</label><input type="text" class="sheet-input" id="spicyNameInput" placeholder="Например: Танцы до утра"><label class="sheet-label">Эмодзи</label><input type="text" class="sheet-input" id="spicyEmojiInput" placeholder="💖" maxlength="4"><div class="sheet-actions"><button class="sheet-btn sheet-btn-secondary" onclick="closeModal()">Отмена</button><button class="sheet-btn sheet-btn-primary" onclick="addCustomSpicy()">Добавить</button></div>';
+  document.getElementById('modal').classList.add('active');
+}
+
+function addCustomSpicy(){
+  const name=document.getElementById('spicyNameInput').value.trim();
+  const emoji=document.getElementById('spicyEmojiInput').value.trim()||'💖';
+  if(!name){showToast('Введи название');return}
+  customSpicy.push({emoji,label:name,id:'custom_'+Date.now()});
+  localStorage.setItem('customSpicy',JSON.stringify(customSpicy));
+  closeModal();
+  renderSpicy();
+  showToast('Желание добавлено! ');
+}
+
+function renderCalendar(){
+  const now=new Date();
+  const year=now.getFullYear();
+  const month=now.getMonth();
+  const days=new Date(year,month+1,0).getDate();
+  const firstDay=new Date(year,month,1).getDay();
+  const offset=firstDay===0?6:firstDay-1;
+  document.getElementById('calendarMonth').textContent=now.toLocaleDateString('ru-RU',{month:'long',year:'numeric'});
+  const grid=document.getElementById('calendarGrid');
+  grid.innerHTML='';
+  ['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].forEach(d=>{
+    const div=document.createElement('div');
+    div.className='flo-cal-dow';
+    div.textContent=d;
+    grid.appendChild(div);
+  });
+  for(let i=0;i<offset;i++){
+    const div=document.createElement('div');
+    div.className='flo-cal-day';
+    grid.appendChild(div);
+  }
+  const today=now.getDate();
+  for(let i=1;i<=days;i++){
+    const dateKey=year+'-'+month+'-'+i;
+    const div=document.createElement('div');
+    div.className='flo-cal-day';
+    if(i===today)div.classList.add('today');
+    const events=intimacyCalendar[dateKey]||[];
+    if(events.length>0)div.classList.add('has-event');
+    div.innerHTML='<div>'+i+'</div><div class="flo-cal-dots">'+events.map(e=>'<div class="flo-cal-dot '+e+'"></div>').join('')+'</div>';
+    div.onclick=()=>toggleFloDay(dateKey);
+    grid.appendChild(div);
+  }
+}
+
+function toggleFloDay(dateKey){
+  const types=['tender','passion','special','experimental'];
+  const current=intimacyCalendar[dateKey]||[];
+  let nextType=null;
+  if(current.length===0){nextType=types[0]}
+  else{
+    const lastIdx=types.indexOf(current[current.length-1]);
+    if(lastIdx<types.length-1){nextType=types[lastIdx+1]}
+    else{nextType=null}
+  }
+  if(nextType===null){intimacyCalendar[dateKey]=[]}
+  else{intimacyCalendar[dateKey]=[...current,nextType]}
+  localStorage.setItem('intimacyCalendar',JSON.stringify(intimacyCalendar));
+  saveToDB('calendar',intimacyCalendar);
+  renderCalendar();
+}
+
+function switchWishlistTab(tab,el){
+  currentWishlistTab=tab;
+  document.querySelectorAll('.wishlist-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  renderWishlist();
+}
+
+function renderWishlist(){
+  const items=JSON.parse(localStorage.getItem('wishlist')||'[]');
+  const container=document.getElementById('wishlistContainer');
+  container.innerHTML='';
+  let filtered=[];
+  if(currentWishlistTab==='active'){filtered=items.filter(item=>!item.fulfilled&&!item.archived)}
+  else if(currentWishlistTab==='fulfilled'){filtered=items.filter(item=>item.fulfilled)}
+  else{filtered=items.filter(item=>item.archived)}
+  if(filtered.length===0){container.innerHTML='<div style="text-align:center;color:var(--t3);padding:30px">Нет желаний в этой категории</div>';return}
+  filtered.forEach((item)=>{
+    const realIdx=items.indexOf(item);
+    const div=document.createElement('div');
+    div.className='wishlist-item'+(item.fulfilled?' fulfilled':'');
+    const addedByText=item.addedBy||'Неизвестно';
+    const addedByColor=item.addedByRole==='artem'?'#a855f7':'#ec4899';
+    let html='<div class="wishlist-header"><div class="wishlist-text">'+item.text+'</div><div class="wishlist-actions">';
+    if(!item.fulfilled&&currentWishlistTab==='active')html+='<button class="wishlist-btn wishlist-btn-fulfill" onclick="fulfillWish('+realIdx+')">✓</button>';
+    if(currentWishlistTab==='active'&&!item.archived)html+='<button class="wishlist-btn" onclick="archiveWish('+realIdx+')" style="background:rgba(100,100,100,0.7)"></button>';
+    if(currentWishlistTab==='archived')html+='<button class="wishlist-btn wishlist-btn-delete" onclick="deleteWish('+realIdx+')">✕</button>';
+    if(currentWishlistTab==='fulfilled')html+='<button class="wishlist-btn wishlist-btn-delete" onclick="deleteWish('+realIdx+')">✕</button>';
+    html+='</div></div>';
+    html+='<div style="margin-top:8px;font-size:11px;color:'+addedByColor+'">Добавил: '+addedByText+'</div>';
+    if(item.url)html+='<a href="'+item.url+'" target="_blank" class="wishlist-link">🔗 '+item.url+'</a>';
+    if(item.fulfilled)html+='<div style="margin-top:8px"><span class="wishlist-badge">✓ Исполнено</span></div>';
+    div.innerHTML=html;
+    container.appendChild(div);
+  });
+}
+
+function addWishlistItem(){
+  const textInput=document.getElementById('wishlistInput');
+  const urlInput=document.getElementById('wishlistUrlInput');
+  const text=textInput.value.trim();
+  const url=urlInput.value.trim();
+  if(!text){showToast('Введи желание');return}
+  const items=JSON.parse(localStorage.getItem('wishlist')||'[]');
+  items.push({text,url:url||null,fulfilled:false,addedBy:roles[currentRole].name,addedByRole:currentRole,addedAt:new Date().toISOString(),archived:false});
+  localStorage.setItem('wishlist',JSON.stringify(items));
+  saveToDB('wishlist',items);
+  textInput.value='';
+  urlInput.value='';
+  renderWishlist();
+  showToast('Добавлено! 🎁');
+}
+
+function fulfillWish(i){
+  const items=JSON.parse(localStorage.getItem('wishlist')||'[]');
+  items[i].fulfilled=true;
+  items[i].fulfilledAt=new Date().toISOString();
+  localStorage.setItem('wishlist',JSON.stringify(items));
+  saveToDB('wishlist',items);
+  renderWishlist();
+  showToast('Исполнено! ');
+}
+
+function archiveWish(i){
+  const items=JSON.parse(localStorage.getItem('wishlist')||'[]');
+  items[i].archived=true;
+  localStorage.setItem('wishlist',JSON.stringify(items));
+  saveToDB('wishlist',items);
+  renderWishlist();
+  showToast('Архивировано');
+}
+
+function deleteWish(i){
+  if(!confirm('Удалить желание?'))return;
+  const items=JSON.parse(localStorage.getItem('wishlist')||'[]');
+  items.splice(i,1);
+  localStorage.setItem('wishlist',JSON.stringify(items));
+  saveToDB('wishlist',items);
+  renderWishlist();
+}
+
+function renderTimeline(){
+  const events=JSON.parse(localStorage.getItem('timelineEvents')||'[]');
+  const container=document.getElementById('timelineContainer');
+  if(events.length===0){container.innerHTML='<div style="text-align:center;color:var(--t3);padding:40px"><div style="font-size:48px;opacity:0.5;margin-bottom:12px">📖</div><div>Добавьте важные моменты</div></div>';return}
+  container.innerHTML='';
+  events.sort((a,b)=>new Date(b.date)-new Date(a.date)).forEach((ev,i)=>{
+    const div=document.createElement('div');
+    div.className='timeline-item';
+    div.innerHTML='<button class="timeline-delete" onclick="deleteTimelineEvent('+i+')">×</button><div class="timeline-date">'+new Date(ev.date).toLocaleDateString('ru-RU')+'</div><div class="timeline-title">'+ev.emoji+' '+ev.title+'</div>';
+    container.appendChild(div);
+  });
+}
+
+function openTimelineSheet(){
+  let html='<div class="sheet-title">📖 Новое событие</div><div class="preset-grid">';
+  timelinePresets.forEach(p=>{html+='<button class="preset-btn" onclick="fillPreset(\''+p.emoji+'\',\''+p.title+'\')">'+p.emoji+' '+p.title+'</button>'});
+  html+='</div><label class="sheet-label">Или своё событие</label><input type="text" class="sheet-input" id="timelineEmoji" placeholder="Эмодзи 💍" maxlength="4"><input type="text" class="sheet-input" id="timelineTitle" placeholder="Название события"><label class="sheet-label">Дата</label><input type="date" class="sheet-input" id="timelineDate" value="'+new Date().toISOString().split('T')[0]+'"><div class="sheet-actions"><button class="sheet-btn sheet-btn-secondary" onclick="closeModal()">Отмена</button><button class="sheet-btn sheet-btn-primary" onclick="addTimelineEvent()">Добавить</button></div>';
+  document.getElementById('sheetContent').innerHTML=html;
+  document.getElementById('modal').classList.add('active');
+}
+
+function fillPreset(emoji,title){
+  document.getElementById('timelineEmoji').value=emoji;
+  document.getElementById('timelineTitle').value=title;
+}
+
+function addTimelineEvent(){
+  const emoji=document.getElementById('timelineEmoji').value.trim()||'✨';
+  const title=document.getElementById('timelineTitle').value.trim();
+  const date=document.getElementById('timelineDate').value;
+  if(!title){showToast('Введи название');return}
+  if(!date){showToast('Выбери дату');return}
+  const events=JSON.parse(localStorage.getItem('timelineEvents')||'[]');
+  events.push({emoji,title,date});
+  localStorage.setItem('timelineEvents',JSON.stringify(events));
+  saveToDB('timeline',events);
+  closeModal();
+  renderTimeline();
+  showToast('Событие добавлено! 💕');
+}
+
+function deleteTimelineEvent(i){
+  if(!confirm('Удалить событие?'))return;
+  const events=JSON.parse(localStorage.getItem('timelineEvents')||'[]');
+  events.splice(i,1);
+  localStorage.setItem('timelineEvents',JSON.stringify(events));
+  saveToDB('timeline',events);
+  renderTimeline();
+}
+
+function openAchievements(){
+  const container=document.getElementById('achievementsList');
+  container.innerHTML='';
+  achievements.forEach(a=>{
+    const unlocked=a.check();
+    const div=document.createElement('div');
+    div.style.cssText='background:'+((unlocked?'linear-gradient(135deg, rgba(168,85,247,0.15), rgba(236,72,153,0.1))':'var(--card)'))+';border:1px solid '+((unlocked?'rgba(168,85,247,0.4)':'var(--card-b)'))+';border-radius:16px;padding:16px 20px;display:flex;align-items:center;gap:16px;width:100%;max-width:340px;opacity:'+(unlocked?'1':'0.6')+';transition:all 0.3s;';
+    div.innerHTML='<div style="font-size:28px;width:32px;text-align:center;flex-shrink:0">'+a.icon+'</div><div style="flex:1;min-width:0"><div style="color:var(--t1);font-size:14px;font-weight:700;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+a.title+'</div><div style="color:var(--t2);font-size:12px">'+a.desc+'</div></div>'+(unlocked?'<div style="font-size:18px;flex-shrink:0">✅</div>':'<div style="font-size:18px;flex-shrink:0;opacity:0.3">🔒</div>');
+    container.appendChild(div);
+  });
+  document.getElementById('achievementsModal').classList.add('active');
+}
+
 function closeAchievements(){document.getElementById('achievementsModal').classList.remove('active')}
+
 function generateIdea(){document.getElementById('ideaText').textContent=ideas[Math.floor(Math.random()*ideas.length)]}
 function generateQuestion(){const q=questions[Math.floor(Math.random()*questions.length)];document.getElementById('questionText').textContent=q.text;document.getElementById('questionCategory').textContent=q.category}
-function openSettings(){document.getElementById('sheetContent').innerHTML='<div class="sheet-title">️ Настройки</div><button class="sheet-btn sheet-btn-secondary" style="width:100%;margin-bottom:10px" onclick="closeModal();switchTab(\'profile\')">👤 Профиль</button><button class="sheet-btn sheet-btn-secondary" style="width:100%;margin-bottom:10px" onclick="closeModal();openThemes()"> Темы</button><button class="sheet-btn sheet-btn-secondary" style="width:100%;margin-bottom:10px" onclick="closeModal();openBlocksSettings()">⚙️ Настройка блоков</button><button class="sheet-btn sheet-btn-secondary" style="width:100%" onclick="closeModal()">Закрыть</button>';document.getElementById('modal').classList.add('active')}
-function openThemes(){const currentTheme=localStorage.getItem('appTheme')||'dark';document.getElementById('sheetContent').innerHTML='<div class="sheet-title">🎨 Темы оформления</div><div class="theme-grid"><div class="theme-card '+(currentTheme==='dark'?'active':'')+'" onclick="selectTheme(this,\'dark\')"><div class="theme-preview" style="background:linear-gradient(135deg,#0f0f1a,#1a1a2e)"></div><div class="theme-name">Тёмная</div></div><div class="theme-card '+(currentTheme==='pink'?'active':'')+'" onclick="selectTheme(this,\'pink\')"><div class="theme-preview" style="background:linear-gradient(135deg,#ec4899,#f472b6)"></div><div class="theme-name">Розовая</div></div><div class="theme-card '+(currentTheme==='blue'?'active':'')+'" onclick="selectTheme(this,\'blue\')"><div class="theme-preview" style="background:linear-gradient(135deg,#6366f1,#818cf8)"></div><div class="theme-name">Голубая</div></div><div class="theme-card '+(currentTheme==='warm'?'active':'')+'" onclick="selectTheme(this,\'warm\')"><div class="theme-preview" style="background:linear-gradient(135deg,#fb923c,#fdba74)"></div><div class="theme-name">Тёплая</div></div></div><div class="sheet-actions" style="margin-top:20px"><button class="sheet-btn sheet-btn-secondary" onclick="closeModal()">Закрыть</button></div>';document.getElementById('modal').classList.add('active')}
-function selectTheme(card,theme){document.querySelectorAll('.theme-card').forEach(c=>c.classList.remove('active'));card.classList.add('active');localStorage.setItem('appTheme',theme);applyTheme(theme);showToast('Тема применена! 🎨')}
-function applyTheme(theme){if(theme==='dark'){document.documentElement.removeAttribute('data-theme')}else{document.documentElement.setAttribute('data-theme',theme)}}
-function openBlocksSettings(){const blocks=[{id:'stats',label:'📊 Статистика'},{id:'calendar',label:'📅 Календарь'},{id:'timeline',label:'📖 Наша история'},{id:'achievements',label:'🏆 Достижения'},{id:'wishlist',label:'📝 Список желаний'},{id:'ideas',label:'🎲 Идеи для свиданий'},{id:'questions',label:'❓ Вопросы'},{id:'secret',label:'🔞 Секретная комната'}];let html='<div class="sheet-title">⚙️ Настройка блоков</div><p style="color:var(--t2);font-size:13px;margin-bottom:16px;text-align:center">Отключи блоки, которые не нужны</p>';blocks.forEach(b=>{const hidden=hiddenBlocks.includes(b.id);html+='<div class="block-toggle"><span class="block-toggle-label">'+b.label+'</span><div class="block-toggle-switch '+(!hidden?'active':'')+'" onclick="toggleBlock(\''+b.id+'\',this)"></div></div>'});html+='<div class="sheet-actions" style="margin-top:20px"><button class="sheet-btn sheet-btn-secondary" onclick="closeModal()">Закрыть</button></div>';document.getElementById('sheetContent').innerHTML=html;document.getElementById('modal').classList.add('active')}
-function toggleBlock(blockId,el){el.classList.toggle('active');if(hiddenBlocks.includes(blockId)){hiddenBlocks=hiddenBlocks.filter(b=>b!==blockId)}else{hiddenBlocks.push(blockId)}localStorage.setItem('hiddenBlocks',JSON.stringify(hiddenBlocks));applyBlockVisibility()}
-function applyBlockVisibility(){const blockMap={'stats':'block-stats','calendar':'block-calendar','timeline':['block-timeline-title','block-timeline-btn','block-timeline'],'achievements':['block-achievements-title'],'wishlist':['block-wishlist-title','block-wishlist','block-wishlist-add'],'ideas':['block-ideas-title','block-ideas'],'questions':['block-questions-title','block-questions'],'secret':['block-secret-title','block-secret']};Object.keys(blockMap).forEach(blockId=>{const elements=blockMap[blockId];const hidden=hiddenBlocks.includes(blockId);if(Array.isArray(elements)){elements.forEach(id=>{const el=document.getElementById(id);if(el)el.style.display=hidden?'none':''})}else{const el=document.getElementById(elements);if(el)el.style.display=hidden?'none':''}})}
-function openSecretLock(){currentPin='';document.getElementById('pinDisplay').textContent='';document.getElementById('pinError').textContent='';document.getElementById('secretSubtitle').textContent='Введи PIN-код';document.getElementById('secretLock').classList.add('active')}
+
+function openSettings(){
+  document.getElementById('sheetContent').innerHTML='<div class="sheet-title">⚙️ Настройки</div><button class="sheet-btn sheet-btn-secondary" style="width:100%;margin-bottom:10px" onclick="closeModal();switchTab(\'profile\')"> Профиль</button><button class="sheet-btn sheet-btn-secondary" style="width:100%;margin-bottom:10px" onclick="closeModal();openThemes()">🎨 Темы</button><button class="sheet-btn sheet-btn-secondary" style="width:100%;margin-bottom:10px" onclick="closeModal();openBlocksSettings()">⚙️ Настройка блоков</button><button class="sheet-btn sheet-btn-secondary" style="width:100%" onclick="closeModal()">Закрыть</button>';
+  document.getElementById('modal').classList.add('active');
+}
+
+function openThemes(){
+  const currentTheme=localStorage.getItem('appTheme')||'dark';
+  document.getElementById('sheetContent').innerHTML='<div class="sheet-title">🎨 Темы оформления</div><div class="theme-grid"><div class="theme-card '+(currentTheme==='dark'?'active':'')+'" onclick="selectTheme(this,\'dark\')"><div class="theme-preview" style="background:linear-gradient(135deg,#0f0f1a,#1a1a2e)"></div><div class="theme-name">Тёмная</div></div><div class="theme-card '+(currentTheme==='pink'?'active':'')+'" onclick="selectTheme(this,\'pink\')"><div class="theme-preview" style="background:linear-gradient(135deg,#ec4899,#f472b6)"></div><div class="theme-name">Розовая</div></div><div class="theme-card '+(currentTheme==='blue'?'active':'')+'" onclick="selectTheme(this,\'blue\')"><div class="theme-preview" style="background:linear-gradient(135deg,#6366f1,#818cf8)"></div><div class="theme-name">Голубая</div></div><div class="theme-card '+(currentTheme==='warm'?'active':'')+'" onclick="selectTheme(this,\'warm\')"><div class="theme-preview" style="background:linear-gradient(135deg,#fb923c,#fdba74)"></div><div class="theme-name">Тёплая</div></div></div><div class="sheet-actions" style="margin-top:20px"><button class="sheet-btn sheet-btn-secondary" onclick="closeModal()">Закрыть</button></div>';
+  document.getElementById('modal').classList.add('active');
+}
+
+function selectTheme(card,theme){
+  document.querySelectorAll('.theme-card').forEach(c=>c.classList.remove('active'));
+  card.classList.add('active');
+  localStorage.setItem('appTheme',theme);
+  applyTheme(theme);
+  showToast('Тема применена! 🎨');
+}
+
+function applyTheme(theme){
+  if(theme==='dark'){document.documentElement.removeAttribute('data-theme')}
+  else{document.documentElement.setAttribute('data-theme',theme)}
+}
+
+function openBlocksSettings(){
+  const blocks=[{id:'stats',label:'📊 Статистика'},{id:'calendar',label:'📅 Календарь'},{id:'timeline',label:' Наша история'},{id:'achievements',label:'🏆 Достижения'},{id:'wishlist',label:'📝 Список желаний'},{id:'ideas',label:'🎲 Идеи для свиданий'},{id:'questions',label:'❓ Вопросы'},{id:'secret',label:'🔞 Секретная комната'}];
+  let html='<div class="sheet-title">⚙️ Настройка блоков</div><p style="color:var(--t2);font-size:13px;margin-bottom:16px;text-align:center">Отключи блоки, которые не нужны</p>';
+  blocks.forEach(b=>{
+    const hidden=hiddenBlocks.includes(b.id);
+    html+='<div class="block-toggle"><span class="block-toggle-label">'+b.label+'</span><div class="block-toggle-switch '+(!hidden?'active':'')+'" onclick="toggleBlock(\''+b.id+'\',this)"></div></div>';
+  });
+  html+='<div class="sheet-actions" style="margin-top:20px"><button class="sheet-btn sheet-btn-secondary" onclick="closeModal()">Закрыть</button></div>';
+  document.getElementById('sheetContent').innerHTML=html;
+  document.getElementById('modal').classList.add('active');
+}
+
+function toggleBlock(blockId,el){
+  el.classList.toggle('active');
+  if(hiddenBlocks.includes(blockId)){hiddenBlocks=hiddenBlocks.filter(b=>b!==blockId)}
+  else{hiddenBlocks.push(blockId)}
+  localStorage.setItem('hiddenBlocks',JSON.stringify(hiddenBlocks));
+  applyBlockVisibility();
+}
+
+function applyBlockVisibility(){
+  const blockMap={'stats':'block-stats','calendar':'block-calendar','timeline':['block-timeline-title','block-timeline-btn','block-timeline'],'achievements':['block-achievements-title'],'wishlist':['block-wishlist-title','block-wishlist','block-wishlist-add'],'ideas':['block-ideas-title','block-ideas'],'questions':['block-questions-title','block-questions'],'secret':['block-secret-title','block-secret']};
+  Object.keys(blockMap).forEach(blockId=>{
+    const elements=blockMap[blockId];
+    const hidden=hiddenBlocks.includes(blockId);
+    if(Array.isArray(elements)){
+      elements.forEach(id=>{
+        const el=document.getElementById(id);
+        if(el)el.style.display=hidden?'none':'';
+      });
+    }else{
+      const el=document.getElementById(elements);
+      if(el)el.style.display=hidden?'none':'';
+    }
+  });
+}
+
+function openSecretLock(){
+  currentPin='';
+  document.getElementById('pinDisplay').textContent='';
+  document.getElementById('pinError').textContent='';
+  document.getElementById('secretSubtitle').textContent='Введи PIN-код';
+  document.getElementById('secretLock').classList.add('active');
+}
+
 function closeSecretLock(){document.getElementById('secretLock').classList.remove('active')}
-function pinInput(num){if(currentPin.length>=4)return;currentPin+=num;document.getElementById('pinDisplay').textContent='●'.repeat(currentPin.length)+'○'.repeat(4-currentPin.length);if(currentPin.length===4)setTimeout(checkPin,200)}
-function pinDelete(){currentPin=currentPin.slice(0,-1);document.getElementById('pinDisplay').textContent='●'.repeat(currentPin.length)+'○'.repeat(4-currentPin.length)}
-function checkPin(){const saved=localStorage.getItem('secretPin')||'1234';if(currentPin===saved){closeSecretLock();document.getElementById('secretScreen').classList.add('active');loadSecretChat();loadSecretPhotos()}else{document.getElementById('pinError').textContent='Неверный PIN';currentPin='';document.getElementById('pinDisplay').textContent=''}}
+
+function pinInput(num){
+  if(currentPin.length>=4)return;
+  currentPin+=num;
+  document.getElementById('pinDisplay').textContent='●'.repeat(currentPin.length)+'○'.repeat(4-currentPin.length);
+  if(currentPin.length===4)setTimeout(checkPin,200);
+}
+
+function pinDelete(){
+  currentPin=currentPin.slice(0,-1);
+  document.getElementById('pinDisplay').textContent='●'.repeat(currentPin.length)+'○'.repeat(4-currentPin.length);
+}
+
+function checkPin(){
+  const saved=localStorage.getItem('secretPin')||'1234';
+  if(currentPin===saved){
+    closeSecretLock();
+    document.getElementById('secretScreen').classList.add('active');
+    loadSecretChat();
+    loadSecretPhotos();
+  }else{
+    document.getElementById('pinError').textContent='Неверный PIN';
+    currentPin='';
+    document.getElementById('pinDisplay').textContent='';
+  }
+}
+
 function closeSecret(){document.getElementById('secretScreen').classList.remove('active')}
-function switchSecretTab(tab){document.querySelectorAll('.secret-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.secret-panel').forEach(p=>p.classList.remove('active'));event.target.classList.add('active');document.getElementById('secretPanel'+tab.charAt(0).toUpperCase()+tab.slice(1)).classList.add('active');if(tab==='kama'){currentKamaCategory=null;renderKamaCategories()}if(tab==='chat')loadSecretChat();if(tab==='photos')loadSecretPhotos()}
-function renderKamaCategories(){const container=document.getElementById('kamaContent');let html='<h3 style="color:#fff;margin-bottom:16px;font-size:18px">🔥 Выбери категорию</h3><div class="kama-categories">';Object.keys(kamaDB).forEach(category=>{const count=kamaDB[category].length;const icon=category==='Позы'?'🛏️':category==='Места'?'📍':category==='Настроение'?'😊':category==='Игры'?'🎲':'💋';html+='<div class="kama-category-card" onclick="openKamaCategory(\''+category+'\')"><button class="cat-delete" onclick="event.stopPropagation();deleteKamaCategory(\''+category+'\')">✕</button><div class="cat-icon">'+icon+'</div><div class="cat-name">'+category+'</div><div class="cat-count">'+count+' вариантов</div></div>'});html+='</div><button class="kama-add-btn" onclick="openAddKamaCategory()">+ Добавить категорию</button>';if(selectedKamaItems.length>0){html+='<button class="btn" onclick="addKamaWish()" style="margin:14px 18px 0;width:calc(100% - 36px)">Отправить выбранные ('+selectedKamaItems.length+')</button>'}container.innerHTML=html}
-function openAddKamaCategory(){document.getElementById('secretSheetContent').innerHTML='<div class="sheet-title">+ Новая категория</div><label class="sheet-label">Название</label><input type="text" class="sheet-input" id="newCategoryName" placeholder="Например: Фантазии"><div class="sheet-actions"><button class="sheet-btn sheet-btn-secondary" onclick="closeSecretModal()">Отмена</button><button class="sheet-btn sheet-btn-primary" onclick="saveNewKamaCategory()">Добавить</button></div>';document.getElementById('secretModal').classList.add('active')}
-function saveNewKamaCategory(){const name=document.getElementById('newCategoryName').value.trim();if(!name){showToast('Введи название');return}if(kamaDB[name]){showToast('Такая категория уже есть');return}kamaDB[name]=[];localStorage.setItem('kamaDB',JSON.stringify(kamaDB));closeSecretModal();renderKamaCategories();showToast('Категория добавлена!')}
-function deleteKamaCategory(category){if(!confirm('Удалить категорию "'+category+'" со всеми вариантами?'))return;delete kamaDB[category];localStorage.setItem('kamaDB',JSON.stringify(kamaDB));renderKamaCategories();showToast('Категория удалена')}
-function openKamaCategory(category){currentKamaCategory=category;const container=document.getElementById('kamaContent');const items=kamaDB[category];let html='<button class="kama-back-btn" onclick="renderKamaCategories()">← Назад к категориям</button>';html+='<button class="kama-add-btn" onclick="openSecretAddKamaItem()">+ Добавить свой вариант</button>';if(items.length===0){html+='<div style="text-align:center;color:var(--t3);padding:30px;font-size:14px">В этой категории пока нет вариантов.<br>Добавь первый! ✨</div>'}else{html+='<h3 style="color:#fff;margin-bottom:14px;font-size:18px">'+category+'</h3><p style="color:var(--t3);font-size:13px;margin-bottom:14px">Выбери что хочешь попробовать:</p><div class="kama-items-list">';items.forEach(item=>{const selected=selectedKamaItems.includes(item.id);html+='<div class="kama-item-card '+(selected?'selected':'')+'" onclick="toggleKamaItem(\''+item.id+'\',this)" style="position:relative"><div class="item-name">'+item.label+'</div><button class="item-delete" onclick="event.stopPropagation();deleteKamaItem(\''+category+'\',\''+item.id+'\')">✕</button></div>'});html+='</div>'}if(selectedKamaItems.length>0){html+='<button class="btn" onclick="addKamaWish()" style="margin:14px 18px 0;width:calc(100% - 36px)">Отправить выбранные ('+selectedKamaItems.length+')</button>'}container.innerHTML=html}
-function openSecretAddKamaItem(){document.getElementById('secretSheetContent').innerHTML='<div class="sheet-title">+ Новый вариант</div><label class="sheet-label">Название</label><input type="text" class="sheet-input" id="newKamaName" placeholder="Например: Новый вариант"><div class="sheet-actions"><button class="sheet-btn sheet-btn-secondary" onclick="closeSecretModal()">Отмена</button><button class="sheet-btn sheet-btn-primary" onclick="saveNewKamaItem()">Добавить</button></div>';document.getElementById('secretModal').classList.add('active')}
+
+function switchSecretTab(tab){
+  document.querySelectorAll('.secret-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.secret-panel').forEach(p=>p.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('secretPanel'+tab.charAt(0).toUpperCase()+tab.slice(1)).classList.add('active');
+  if(tab==='kama'){currentKamaCategory=null;renderKamaCategories()}
+  if(tab==='chat')loadSecretChat();
+  if(tab==='photos')loadSecretPhotos();
+}
+
+function renderKamaCategories(){
+  const container=document.getElementById('kamaContent');
+  let html='<h3 style="color:#fff;margin-bottom:16px;font-size:18px"> Выбери категорию</h3><div class="kama-categories">';
+  Object.keys(kamaDB).forEach(category=>{
+    const count=kamaDB[category].length;
+    const icon=category==='Позы'?'🛏️':category==='Места'?'📍':category==='Настроение'?'😊':category==='Игры'?'🎲':'💋';
+    html+='<div class="kama-category-card" onclick="openKamaCategory(\''+category+'\')"><button class="cat-delete" onclick="event.stopPropagation();deleteKamaCategory(\''+category+'\')">✕</button><div class="cat-icon">'+icon+'</div><div class="cat-name">'+category+'</div><div class="cat-count">'+count+' вариантов</div></div>';
+  });
+  html+='</div><button class="kama-add-btn" onclick="openAddKamaCategory()">+ Добавить категорию</button>';
+  if(selectedKamaItems.length>0){
+    html+='<button class="btn" onclick="addKamaWish()" style="margin:14px 18px 0;width:calc(100% - 36px)">Отправить выбранные ('+selectedKamaItems.length+')</button>';
+  }
+  container.innerHTML=html;
+}
+
+function openAddKamaCategory(){
+  document.getElementById('secretSheetContent').innerHTML='<div class="sheet-title">+ Новая категория</div><label class="sheet-label">Название</label><input type="text" class="sheet-input" id="newCategoryName" placeholder="Например: Фантазии"><div class="sheet-actions"><button class="sheet-btn sheet-btn-secondary" onclick="closeSecretModal()">Отмена</button><button class="sheet-btn sheet-btn-primary" onclick="saveNewKamaCategory()">Добавить</button></div>';
+  document.getElementById('secretModal').classList.add('active');
+}
+
+function saveNewKamaCategory(){
+  const name=document.getElementById('newCategoryName').value.trim();
+  if(!name){showToast('Введи название');return}
+  if(kamaDB[name]){showToast('Такая категория уже есть');return}
+  kamaDB[name]=[];
+  localStorage.setItem('kamaDB',JSON.stringify(kamaDB));
+  closeSecretModal();
+  renderKamaCategories();
+  showToast('Категория добавлена!');
+}
+
+function deleteKamaCategory(category){
+  if(!confirm('Удалить категорию "'+category+'" со всеми вариантами?'))return;
+  delete kamaDB[category];
+  localStorage.setItem('kamaDB',JSON.stringify(kamaDB));
+  renderKamaCategories();
+  showToast('Категория удалена');
+}
+
+function openKamaCategory(category){
+  currentKamaCategory=category;
+  const container=document.getElementById('kamaContent');
+  const items=kamaDB[category];
+  let html='<button class="kama-back-btn" onclick="renderKamaCategories()">← Назад к категориям</button>';
+  html+='<button class="kama-add-btn" onclick="openSecretAddKamaItem()">+ Добавить свой вариант</button>';
+  if(items.length===0){
+    html+='<div style="text-align:center;color:var(--t3);padding:30px;font-size:14px">В этой категории пока нет вариантов.<br>Добавь первый! ✨</div>';
+  }else{
+    html+='<h3 style="color:#fff;margin-bottom:14px;font-size:18px">'+category+'</h3><p style="color:var(--t3);font-size:13px;margin-bottom:14px">Выбери что хочешь попробовать:</p><div class="kama-items-list">';
+    items.forEach(item=>{
+      const selected=selectedKamaItems.includes(item.id);
+      html+='<div class="kama-item-card '+(selected?'selected':'')+'" onclick="toggleKamaItem(\''+item.id+'\',this)" style="position:relative"><div class="item-name">'+item.label+'</div><button class="item-delete" onclick="event.stopPropagation();deleteKamaItem(\''+category+'\',\''+item.id+'\')">✕</button></div>';
+    });
+    html+='</div>';
+  }
+  if(selectedKamaItems.length>0){
+    html+='<button class="btn" onclick="addKamaWish()" style="margin:14px 18px 0;width:calc(100% - 36px)">Отправить выбранные ('+selectedKamaItems.length+')</button>';
+  }
+  container.innerHTML=html;
+}
+
+function openSecretAddKamaItem(){
+  document.getElementById('secretSheetContent').innerHTML='<div class="sheet-title">+ Новый вариант</div><label class="sheet-label">Название</label><input type="text" class="sheet-input" id="newKamaName" placeholder="Например: Новый вариант"><div class="sheet-actions"><button class="sheet-btn sheet-btn-secondary" onclick="closeSecretModal()">Отмена</button><button class="sheet-btn sheet-btn-primary" onclick="saveNewKamaItem()">Добавить</button></div>';
+  document.getElementById('secretModal').classList.add('active');
+}
+
 function closeSecretModal(){document.getElementById('secretModal').classList.remove('active')}
-function saveNewKamaItem(){const name=document.getElementById('newKamaName').value.trim();if(!name){showToast('Введи название');return}const newItem={id:'custom_'+Date.now(),label:name};kamaDB[currentKamaCategory].push(newItem);localStorage.setItem('kamaDB',JSON.stringify(kamaDB));closeSecretModal();openKamaCategory(currentKamaCategory);showToast('Добавлено!')}
-function deleteKamaItem(category,id){if(!confirm('Удалить этот вариант?'))return;kamaDB[category]=kamaDB[category].filter(i=>i.id!==id);localStorage.setItem('kamaDB',JSON.stringify(kamaDB));openKamaCategory(category);showToast('Удалено')}
-function toggleKamaItem(id,el){el.classList.toggle('selected');if(selectedKamaItems.includes(id)){selectedKamaItems=selectedKamaItems.filter(i=>i!==id)}else{selectedKamaItems.push(id)}}
-function addKamaWish(){if(selectedKamaItems.length===0){showToast('Выбери хотя бы одно желание! 🔥');return}const labels={};Object.values(kamaDB).forEach(items=>{items.forEach(item=>{labels[item.id]=item.label})});const selectedText=selectedKamaItems.map(id=>labels[id]).join(', ');const items=JSON.parse(localStorage.getItem('wishlist')||'[]');items.push({text:'🔥 Желание: '+selectedText,fulfilled:false,addedBy:roles[currentRole].name,addedByRole:currentRole,addedAt:new Date().toISOString(),archived:false});localStorage.setItem('wishlist',JSON.stringify(items));saveToDB('wishlist',items);selectedKamaItems=[];showToast('Желания отправлены! 🔥');renderKamaCategories()}
-function openNoteSheet(){document.getElementById('sheetContent').innerHTML='<div class="sheet-title">💌 Напиши записочку</div><textarea class="sheet-input" id="noteText" placeholder="Напиши что-нибудь..." style="min-height:120px" oninput="updateLetter()"></textarea><div class="sheet-actions"><button class="sheet-btn sheet-btn-secondary" onclick="closeModal()">Отмена</button><button class="sheet-btn sheet-btn-primary" onclick="sendNote()">Отправить</button></div>';document.getElementById('modal').classList.add('active')}
-function updateLetter(){const text=document.getElementById('noteText').value;const content=document.getElementById('letterContent');content.textContent=text||'Здесь появится записочка... ✨';content.classList.toggle('empty',!text)}
-function sendNote(){const text=document.getElementById('noteText').value.trim();if(!text){showToast('Напиши что-нибудь');return}saveToDB('note_'+currentRole,text);closeModal();showToast('Записочка отправлена! 💌')}
+
+function saveNewKamaItem(){
+  const name=document.getElementById('newKamaName').value.trim();
+  if(!name){showToast('Введи название');return}
+  const newItem={id:'custom_'+Date.now(),label:name};
+  kamaDB[currentKamaCategory].push(newItem);
+  localStorage.setItem('kamaDB',JSON.stringify(kamaDB));
+  closeSecretModal();
+  openKamaCategory(currentKamaCategory);
+  showToast('Добавлено!');
+}
+
+function deleteKamaItem(category,id){
+  if(!confirm('Удалить этот вариант?'))return;
+  kamaDB[category]=kamaDB[category].filter(i=>i.id!==id);
+  localStorage.setItem('kamaDB',JSON.stringify(kamaDB));
+  openKamaCategory(category);
+  showToast('Удалено');
+}
+
+function toggleKamaItem(id,el){
+  el.classList.toggle('selected');
+  if(selectedKamaItems.includes(id)){selectedKamaItems=selectedKamaItems.filter(i=>i!==id)}
+  else{selectedKamaItems.push(id)}
+}
+
+function addKamaWish(){
+  if(selectedKamaItems.length===0){showToast('Выбери хотя бы одно желание! 🔥');return}
+  const labels={};
+  Object.values(kamaDB).forEach(items=>{items.forEach(item=>{labels[item.id]=item.label})});
+  const selectedText=selectedKamaItems.map(id=>labels[id]).join(', ');
+  const items=JSON.parse(localStorage.getItem('wishlist')||'[]');
+  items.push({text:'🔥 Желание: '+selectedText,fulfilled:false,addedBy:roles[currentRole].name,addedByRole:currentRole,addedAt:new Date().toISOString(),archived:false});
+  localStorage.setItem('wishlist',JSON.stringify(items));
+  saveToDB('wishlist',items);
+  selectedKamaItems=[];
+  showToast('Желания отправлены! 🔥');
+  renderKamaCategories();
+}
+
+function openNoteSheet(){
+  document.getElementById('sheetContent').innerHTML='<div class="sheet-title">💌 Напиши записочку</div><textarea class="sheet-input" id="noteText" placeholder="Напиши что-нибудь..." style="min-height:120px" oninput="updateLetter()"></textarea><div class="sheet-actions"><button class="sheet-btn sheet-btn-secondary" onclick="closeModal()">Отмена</button><button class="sheet-btn sheet-btn-primary" onclick="sendNote()">Отправить</button></div>';
+  document.getElementById('modal').classList.add('active');
+}
+
+function updateLetter(){
+  const text=document.getElementById('noteText').value;
+  const content=document.getElementById('letterContent');
+  content.textContent=text||'Здесь появится записочка... ✨';
+  content.classList.toggle('empty',!text);
+}
+
+function sendNote(){
+  const text=document.getElementById('noteText').value.trim();
+  if(!text){showToast('Напиши что-нибудь');return}
+  saveToDB('note_'+currentRole,text);
+  closeModal();
+  showToast('Записочка отправлена! 💌');
+}
+
 function closeModal(){document.getElementById('modal').classList.remove('active')}
-function openAvatarPicker(){let html='<div class="sheet-title">Выбери аватар</div><div class="avatar-picker">';avatarOptions.forEach(av=>{const selected=roles[currentRole].emoji===av?'selected':'';html+='<div class="avatar-option '+selected+'" onclick="selectAvatar(\''+av+'\')">'+av+'</div>'});html+='</div><div class="sheet-actions"><button class="sheet-btn sheet-btn-secondary" onclick="closeModal()">Закрыть</button></div>';document.getElementById('sheetContent').innerHTML=html;document.getElementById('modal').classList.add('active')}
-function selectAvatar(av){roles[currentRole].emoji=av;document.getElementById('profileAvatar').textContent=av;document.getElementById('headerAvatar').textContent=roles[currentRole].partnerEmoji;closeModal();showToast('Аватар изменён!')}
-function editProfile(){const data=roles[currentRole];document.getElementById('sheetContent').innerHTML='<div class="sheet-title">✏️ Редактировать профиль</div><label class="sheet-label">Имя</label><input type="text" class="sheet-input" id="editName" value="'+data.name+'"><div class="sheet-actions"><button class="sheet-btn sheet-btn-secondary" onclick="closeModal()">Отмена</button><button class="sheet-btn sheet-btn-primary" onclick="saveProfile()">Сохранить</button></div>';document.getElementById('modal').classList.add('active')}
-function saveProfile(){const name=document.getElementById('editName').value.trim();if(!name){showToast('Введи имя');return}roles[currentRole].name=name;updateProfile();closeModal();showToast('Профиль обновлён! ✨')}
-function openRelationshipStartSheet(){const saved=localStorage.getItem('relationshipStart')||'';const val=saved?saved.split('T')[0]:'';document.getElementById('sheetContent').innerHTML='<div class="sheet-title">💕 Дата начала отношений</div><label class="sheet-label">Дата</label><input type="date" class="sheet-input" id="relationshipStartDate" value="'+val+'"><div class="sheet-actions"><button class="sheet-btn sheet-btn-secondary" onclick="closeModal()">Отмена</button><button class="sheet-btn sheet-btn-primary" onclick="saveRelationshipStart()">Сохранить</button></div>';document.getElementById('modal').classList.add('active')}
-function saveRelationshipStart(){const date=document.getElementById('relationshipStartDate').value;if(!date){showToast('Выбери дату');return}localStorage.setItem('relationshipStart',new Date(date).toISOString());updateStats();closeModal();showToast('Дата сохранена! 💕')}
-function logout(){if(confirm('Выйти из аккаунта?')){localStorage.removeItem('coupleAppRole');location.reload()}}
+
+function openAvatarPicker(){
+  let html='<div class="sheet-title">Выбери аватар</div><div class="avatar-picker">';
+  avatarOptions.forEach(av=>{
+    const selected=roles[currentRole].emoji===av?'selected':'';
+    html+='<div class="avatar-option '+selected+'" onclick="selectAvatar(\''+av+'\')">'+av+'</div>';
+  });
+  html+='</div><div class="sheet-actions"><button class="sheet-btn sheet-btn-secondary" onclick="closeModal()">Закрыть</button></div>';
+  document.getElementById('sheetContent').innerHTML=html;
+  document.getElementById('modal').classList.add('active');
+}
+
+function selectAvatar(av){
+  roles[currentRole].emoji=av;
+  document.getElementById('profileAvatar').textContent=av;
+  document.getElementById('headerAvatar').textContent=roles[currentRole].partnerEmoji;
+  closeModal();
+  showToast('Аватар изменён!');
+}
+
+function editProfile(){
+  const data=roles[currentRole];
+  document.getElementById('sheetContent').innerHTML='<div class="sheet-title">✏️ Редактировать профиль</div><label class="sheet-label">Имя</label><input type="text" class="sheet-input" id="editName" value="'+data.name+'"><div class="sheet-actions"><button class="sheet-btn sheet-btn-secondary" onclick="closeModal()">Отмена</button><button class="sheet-btn sheet-btn-primary" onclick="saveProfile()">Сохранить</button></div>';
+  document.getElementById('modal').classList.add('active');
+}
+
+function saveProfile(){
+  const name=document.getElementById('editName').value.trim();
+  if(!name){showToast('Введи имя');return}
+  roles[currentRole].name=name;
+  updateProfile();
+  closeModal();
+  showToast('Профиль обновлён! ✨');
+}
+
+function openRelationshipStartSheet(){
+  const saved=localStorage.getItem('relationshipStart')||'';
+  const val=saved?saved.split('T')[0]:'';
+  document.getElementById('sheetContent').innerHTML='<div class="sheet-title">💕 Дата начала отношений</div><label class="sheet-label">Дата</label><input type="date" class="sheet-input" id="relationshipStartDate" value="'+val+'"><div class="sheet-actions"><button class="sheet-btn sheet-btn-secondary" onclick="closeModal()">Отмена</button><button class="sheet-btn sheet-btn-primary" onclick="saveRelationshipStart()">Сохранить</button></div>';
+  document.getElementById('modal').classList.add('active');
+}
+
+function saveRelationshipStart(){
+  const date=document.getElementById('relationshipStartDate').value;
+  if(!date){showToast('Выбери дату');return}
+  localStorage.setItem('relationshipStart',new Date(date).toISOString());
+  updateStats();
+  closeModal();
+  showToast('Дата сохранена! 💕');
+}
+
+function logout(){
+  if(confirm('Выйти из аккаунта?')){
+    localStorage.removeItem('coupleAppRole');
+    location.reload();
+  }
+}
+
 document.getElementById('cameraInput').onchange=function(e){handlePhotoUpload(e,'cameraPreview','lastPhotoFrame','lastPhotoCaption',true)};
 document.getElementById('galleryInput').onchange=function(e){handlePhotoUpload(e,'cameraPreview','lastPhotoFrame','lastPhotoCaption',true)};
 document.getElementById('secretCameraInput').onchange=function(e){handleSecretPhotoUpload(e)};
 document.getElementById('secretGalleryInput').onchange=function(e){handleSecretPhotoUpload(e)};
-function handlePhotoUpload(e,previewId,frameId,captionId,sendToPartner){const file=e.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=function(ev){const imgSrc=ev.target.result;document.getElementById(previewId).innerHTML='<img src="'+imgSrc+'" style="width:100%;height:100%;object-fit:cover">';document.getElementById(frameId).innerHTML='<img src="'+imgSrc+'" style="width:100%;height:100%;object-fit:cover">';document.getElementById(captionId).textContent='Отправлено только что 💕';const count=getPhotosCount()+1;localStorage.setItem('photosCount',count.toString());if(sendToPartner){saveToDB('lastPhoto_'+currentRole,imgSrc)}updateStats();showToast(' Фото отправлено!');switchTab('home')};reader.readAsDataURL(file);e.target.value=''}
-function handleSecretPhotoUpload(e){const file=e.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=function(ev){const imgSrc=ev.target.result;secretPhotos.push({src:imgSrc,sender:currentRole,time:new Date().toISOString()});localStorage.setItem('secretPhotos',JSON.stringify(secretPhotos));saveToDB('secretPhotos',secretPhotos);loadSecretPhotos();showToast('📸 Фото добавлено!')};reader.readAsDataURL(file);e.target.value=''}
-function loadSecretPhotos(){const stored=localStorage.getItem('secretPhotos');if(stored){secretPhotos=JSON.parse(stored)}const grid=document.getElementById('secretPhotosGrid');grid.innerHTML='';if(secretPhotos.length===0){grid.innerHTML='<div style="text-align:center;color:var(--t3);padding:30px;grid-column:1/-1">Нет фото</div>';return}secretPhotos.forEach((p,i)=>{const div=document.createElement('div');div.className='secret-photo-item';div.innerHTML='<img src="'+p.src+'">';grid.appendChild(div)})}
-db.channel('messages_realtime').on('postgres_changes',{event:'INSERT',schema:'public',table:'messages'},()=>{if(document.getElementById('screen-chat').classList.contains('active'))loadMessages()}).subscribe();
-db.channel('app_state_realtime').on('postgres_changes',{event:'*',schema:'public',table:'app_state'},(payload)=>{if(payload.new&&payload.new.key){if(payload.new.key==='moods_sonya'||payload.new.key==='moods_artem'){if(document.getElementById('screen-home').classList.contains('active'))loadPartnerMood()}if(payload.new.key==='spicy_sonya'||payload.new.key==='spicy_artem'){if(document.getElementById('screen-feelings').classList.contains('active'))renderSpicyPartner()}if(payload.new.key==='wishlist'){loadAllData()}if(payload.new.key==='lastPhoto_artem'||payload.new.key==='lastPhoto_sonya'){loadAllData()}}}).subscribe();
-window.onload=()=>{applyTheme(localStorage.getItem('appTheme')||'dark');const savedRole=localStorage.getItem('coupleAppRole');if(savedRole)selectRole(savedRole);renderMoods();renderSpicy();loadSavedSpicyValues();renderCalendar();renderWishlist();renderTimeline();updateStats();generateIdea();generateQuestion()};
+
+function handlePhotoUpload(e,previewId,frameId,captionId,sendToPartner){
+  const file=e.target.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=function(ev){
+    const imgSrc=ev.target.result;
+    document.getElementById(previewId).innerHTML='<img src="'+imgSrc+'" style="width:100%;height:100%;object-fit:cover">';
+    document.getElementById(frameId).innerHTML='<img src="'+imgSrc+'" style="width:100%;height:100%;object-fit:cover">';
+    document.getElementById(captionId).textContent='Отправлено только что 💕';
+    const count=getPhotosCount()+1;
+    localStorage.setItem('photosCount',count.toString());
+    if(sendToPartner){saveToDB('lastPhoto_'+currentRole,imgSrc)}
+    updateStats();
+    showToast('📸 Фото отправлено!');
+    switchTab('home');
+  };
+  reader.readAsDataURL(file);
+  e.target.value='';
+}
+
+function handleSecretPhotoUpload(e){
+  const file=e.target.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=function(ev){
+    const imgSrc=ev.target.result;
+    db.from('secret_photos').insert([{sender:currentRole,photo_url:imgSrc}]).then(({error})=>{
+      if(!error){
+        loadSecretPhotos();
+        showToast('📸 Фото добавлено!');
+        showNotification(' Новое фото','У тебя новое фото в секретной комнате');
+      }
+    });
+  };
+  reader.readAsDataURL(file);
+  e.target.value='';
+}
+
+function loadSecretPhotos(){
+  db.from('secret_photos').select('*').order('created_at',{ascending:true}).then(({data})=>{
+    const grid=document.getElementById('secretPhotosGrid');
+    grid.innerHTML='';
+    if(!data||data.length===0){
+      grid.innerHTML='<div style="text-align:center;color:var(--t3);padding:30px;grid-column:1/-1">Нет фото</div>';
+      return;
+    }
+    data.forEach(p=>{
+      const div=document.createElement('div');
+      div.className='secret-photo-item';
+      div.innerHTML='<img src="'+p.photo_url+'">';
+      grid.appendChild(div);
+    });
+  });
+}
+
+// Realtime подписки
+db.channel('messages_realtime').on('postgres_changes',{event:'INSERT',schema:'public',table:'messages'},()=>{
+  if(document.getElementById('screen-chat').classList.contains('active')){
+    loadMessages();
+  }else{
+    showNotification('💬 Новое сообщение','У тебя новое сообщение в чате');
+  }
+}).subscribe();
+
+db.channel('secret_messages_realtime').on('postgres_changes',{event:'INSERT',schema:'public',table:'secret_messages'},()=>{
+  if(document.getElementById('secretPanelChat').classList.contains('active')){
+    loadSecretChat();
+  }else{
+    showNotification('🔞 Новое сообщение','У тебя новое сообщение в секретном чате');
+  }
+}).subscribe();
+
+db.channel('secret_photos_realtime').on('postgres_changes',{event:'INSERT',schema:'public',table:'secret_photos'},()=>{
+  if(document.getElementById('secretPanelPhotos').classList.contains('active')){
+    loadSecretPhotos();
+  }else{
+    showNotification('🔞 Новое фото','У тебя новое фото в секретной комнате');
+  }
+}).subscribe();
+
+db.channel('app_state_realtime').on('postgres_changes',{event:'*',schema:'public',table:'app_state'},(payload)=>{
+  if(payload.new&&payload.new.key){
+    if(payload.new.key==='moods_sonya'||payload.new.key==='moods_artem'){
+      if(document.getElementById('screen-home').classList.contains('active'))loadPartnerMood();
+    }
+    if(payload.new.key==='spicy_sonya'||payload.new.key==='spicy_artem'){
+      if(document.getElementById('screen-feelings').classList.contains('active'))renderSpicyPartner();
+      showNotification('🔥 Новые желания','Партнёр обновил уровни желаний');
+    }
+    if(payload.new.key==='wishlist'){
+      loadAllData();
+      showNotification('🎁 Новое желание','Партнёр добавил новое желание');
+    }
+    if(payload.new.key==='lastPhoto_artem'||payload.new.key==='lastPhoto_sonya'){
+      loadAllData();
+      showNotification('📸 Новое фото','Партнёр отправил фото');
+    }
+  }
+}).subscribe();
+
+// Обновление статуса при закрытии вкладки
+window.addEventListener('beforeunload',()=>{
+  if(currentRole){
+    db.from('user_status').upsert({user_id:currentRole,last_seen:new Date().toISOString(),is_online:false}).eq('user_id',currentRole).then(()=>{}).catch(()=>{});
+  }
+});
+
+window.onload=()=>{
+  applyTheme(localStorage.getItem('appTheme')||'dark');
+  const savedRole=localStorage.getItem('coupleAppRole');
+  if(savedRole)selectRole(savedRole);
+  renderMoods();
+  renderSpicy();
+  loadSavedSpicyValues();
+  renderCalendar();
+  renderWishlist();
+  renderTimeline();
+  updateStats();
+  generateIdea();
+  generateQuestion();
+};
 </script>
 </body>
 </html>
