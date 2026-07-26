@@ -251,7 +251,7 @@ input[type="file"]{display:none}
   <div class="app-header">
     <div class="header-avatar" id="headerAvatar"></div>
     <div class="header-info"><h2 id="headerName">Сонечка</h2><p id="headerStatus" style="color:var(--t2)">Был(а) недавно</p></div>
-    <div class="header-actions"><button class="icon-btn" onclick="location.reload()" title="Обновить">🔄</button><button class="icon-btn" onclick="openSettings()">⚙️</button></div>
+    <div class="header-actions"><button class="icon-btn" onclick="location.reload()" title="Обновить">🔄</button><button class="icon-btn" onclick="openSettings()">️</button></div>
   </div>
   <div class="screen-container">
     <div class="screen active" id="screen-home">
@@ -263,7 +263,7 @@ input[type="file"]{display:none}
       <div class="photo-card"><div style="display:flex;justify-content:space-between;margin-bottom:12px"><span style="color:var(--t2);font-size:12px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700">Последнее фото</span></div><div class="photo-frame" id="lastPhotoFrame"><div class="photo-placeholder">📸</div></div><div class="photo-caption" id="lastPhotoCaption">Здесь появится фоточка 💕</div></div>
       <div class="grid-2">
         <div class="quick-action" onclick="switchTab('camera')"><div class="quick-action-icon">📷</div><div class="quick-action-label">Отправить фото</div></div>
-        <div class="quick-action" onclick="openNoteSheet()"><div class="quick-action-icon">💌</div><div class="quick-action-label">Написать записку</div></div>
+        <div class="quick-action" onclick="openNoteSheet()"><div class="quick-action-icon"></div><div class="quick-action-label">Написать записку</div></div>
         <div class="quick-action" onclick="switchTab('feelings')"><div class="quick-action-icon">💭</div><div class="quick-action-label">Мои чувства</div></div>
         <div class="quick-action" onclick="switchTab('chat')"><div class="quick-action-icon">💬</div><div class="quick-action-label">Написать</div></div>
       </div>
@@ -280,17 +280,17 @@ input[type="file"]{display:none}
     </div>
     <div class="screen chat-screen" id="screen-chat">
       <div class="chat-header"><div style="color:var(--t1);font-weight:700;font-size:16px">💬 Чат</div></div>
-      <div class="chat-messages" id="chatMessages"><div style="text-align:center;color:var(--t3);margin-top:60px"><div style="font-size:64px;opacity:0.5;margin-bottom:16px">💬</div><div>Начните переписку<br>со своей половинкой ❤️</div></div></div>
+      <div class="chat-messages" id="chatMessages"><div style="text-align:center;color:var(--t3);margin-top:60px"><div style="font-size:64px;opacity:0.5;margin-bottom:16px"></div><div>Начните переписку<br>со своей половинкой ❤️</div></div></div>
       <div class="chat-input-area"><input type="text" class="chat-input" id="chatInput" placeholder="Сообщение..." onkeypress="if(event.key==='Enter')sendMessage()"><button class="send-btn" onclick="sendMessage()">➤</button></div>
     </div>
     <div class="screen" id="screen-camera" style="text-align:center;padding:40px 18px 160px">
       <div class="section-title">Камера 📷</div><div class="section-subtitle">Отправь фоточку</div>
       <div style="margin:40px 0"><div class="photo-frame" id="cameraPreview" style="aspect-ratio:3/4;max-width:300px;margin:0 auto"><div class="photo-placeholder">📸</div></div></div>
-      <button class="btn" onclick="document.getElementById('cameraInput').click()" style="max-width:300px">📷 Сделать фото</button>
+      <button class="btn" onclick="document.getElementById('cameraInput').click()" style="max-width:300px"> Сделать фото</button>
       <button class="btn" onclick="document.getElementById('galleryInput').click()" style="max-width:300px;background:var(--inp)">🖼️ Выбрать из галереи</button>
     </div>
     <div class="screen" id="screen-us">
-      <div class="section-title">Для нас 💕</div><div class="section-subtitle">Ваша история и статистика</div>
+      <div class="section-title">Для нас </div><div class="section-subtitle">Ваша история и статистика</div>
       <div class="grid-3" id="block-stats"><div class="stat-box"><div class="stat-val" id="statDays">0</div><div class="stat-label">Дней</div></div><div class="stat-box"><div class="stat-val" id="statMessages">0</div><div class="stat-label">Сообщений</div></div><div class="stat-box"><div class="stat-val" id="statPhotos">0</div><div class="stat-label">Фото</div></div></div>
       <div class="flo-calendar" id="block-calendar">
         <div class="flo-cal-header"><span class="flo-cal-title">📅 Календарь моментов</span><span class="flo-cal-month" id="calendarMonth"></span></div>
@@ -325,7 +325,7 @@ input[type="file"]{display:none}
       <button class="btn" onclick="openSecretLock()" style="background:linear-gradient(135deg,#a855f7,#ec4899)" id="block-secret">🔞 Войти</button>
     </div>
     <div class="screen profile-screen" id="screen-profile">
-      <div class="profile-header"><div class="profile-avatar" id="profileAvatar" onclick="openAvatarPicker()">👨</div><div class="profile-name" id="profileName">Артем</div><div class="profile-subtitle" id="profileSubtitle">Нажми на аватар, чтобы изменить</div></div>
+      <div class="profile-header"><div class="profile-avatar" id="profileAvatar" onclick="openAvatarPicker()"></div><div class="profile-name" id="profileName">Артем</div><div class="profile-subtitle" id="profileSubtitle">Нажми на аватар, чтобы изменить</div></div>
       <div class="profile-section"><div class="profile-section-title">Аккаунт</div><div class="profile-menu"><div class="profile-menu-item" onclick="editProfile()"><div class="profile-menu-icon">✏️</div><div class="profile-menu-label">Редактировать профиль</div><div class="profile-menu-arrow">›</div></div></div></div>
       <div class="profile-section"><div class="profile-section-title">Отношения</div><div class="profile-menu"><div class="profile-menu-item" onclick="openRelationshipStartSheet()"><div class="profile-menu-icon">💕</div><div class="profile-menu-label">Дата начала отношений</div><div class="profile-menu-arrow">›</div></div></div></div>
       <div class="profile-section"><div class="profile-section-title">Приложение</div><div class="profile-menu"><div class="profile-menu-item" onclick="openThemes()"><div class="profile-menu-icon">🎨</div><div class="profile-menu-label">Темы оформления</div><div class="profile-menu-arrow">›</div></div><div class="profile-menu-item" onclick="openBlocksSettings()"><div class="profile-menu-icon">⚙️</div><div class="profile-menu-label">Настройка блоков</div><div class="profile-menu-arrow">›</div></div></div></div>
@@ -334,7 +334,7 @@ input[type="file"]{display:none}
   </div>
   <div class="tab-bar">
     <div class="tab-item active" onclick="switchTab('home')"><div class="tab-icon">🏠</div><div class="tab-label">Главная</div></div>
-    <div class="tab-item" onclick="switchTab('feelings')"><div class="tab-icon">💭</div><div class="tab-label">Чувства</div></div>
+    <div class="tab-item" onclick="switchTab('feelings')"><div class="tab-icon"></div><div class="tab-label">Чувства</div></div>
     <div class="tab-item camera-tab" onclick="switchTab('camera')"><div class="tab-icon">📷</div></div>
     <div class="tab-item" onclick="switchTab('chat')"><div class="tab-icon">💬</div><div class="tab-label">Чат</div></div>
     <div class="tab-item" onclick="switchTab('us')"><div class="tab-icon">💕</div><div class="tab-label">Для нас</div></div>
@@ -342,17 +342,17 @@ input[type="file"]{display:none}
   <div class="role-select" id="roleSelect">
     <div class="role-emoji">💕</div><h1>Для нас</h1><p>Выбери, кто ты</p>
     <button class="role-btn" onclick="selectRole('artem')"><span class="emoji">👨</span><span>Я — Артем</span></button>
-    <button class="role-btn" onclick="selectRole('sonya')"><span class="emoji">👩</span><span>Я — Сонечка</span></button>
+    <button class="role-btn" onclick="selectRole('sonya')"><span class="emoji"></span><span>Я — Сонечка</span></button>
   </div>
   <div class="secret-lock" id="secretLock">
-    <div style="position:absolute;top:44px;right:18px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center" onclick="closeSecretLock()">✕</div>
+    <div style="position:absolute;top:44px;right:18px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center" onclick="closeSecretLock()"></div>
     <div class="secret-icon">🔞</div><div class="secret-title">Секретная комната</div><div class="secret-subtitle" id="secretSubtitle">Введи PIN-код</div>
     <div class="pin-display" id="pinDisplay"></div>
     <div class="pin-keypad">
       <button class="pin-key" onclick="pinInput('1')">1</button><button class="pin-key" onclick="pinInput('2')">2</button><button class="pin-key" onclick="pinInput('3')">3</button>
       <button class="pin-key" onclick="pinInput('4')">4</button><button class="pin-key" onclick="pinInput('5')">5</button><button class="pin-key" onclick="pinInput('6')">6</button>
       <button class="pin-key" onclick="pinInput('7')">7</button><button class="pin-key" onclick="pinInput('8')">8</button><button class="pin-key" onclick="pinInput('9')">9</button>
-      <button class="pin-key" style="visibility:hidden"></button><button class="pin-key" onclick="pinInput('0')">0</button><button class="pin-key" onclick="pinDelete()">⌫</button>
+      <button class="pin-key" style="visibility:hidden"></button><button class="pin-key" onclick="pinInput('0')">0</button><button class="pin-key" onclick="pinDelete()"></button>
     </div>
     <div class="pin-error" id="pinError"></div>
   </div>
@@ -393,7 +393,7 @@ const { createClient } = supabase;
 const db = createClient(supabaseUrl, supabaseKey);
 
 let currentRole = 'artem', currentPin = '', selectedKamaItems = [], currentKamaCategory = null, currentWishlistTab = 'active', partnerMood = null, savedSpicyValues = {}, syncTimeout, heartbeatInterval, syncInterval, notificationPermission = false, userAvatar = null;
-const roles = { artem: { name: 'Артем', emoji: '👨', partner: 'Сонечка', partnerEmoji: '🥰' }, sonya: { name: 'Сонечка', emoji: '👩', partner: 'Артем', partnerEmoji: '😘' } };
+const roles = { artem: { name: 'Артем', emoji: '', partner: 'Сонечка', partnerEmoji: '🥰' }, sonya: { name: 'Сонечка', emoji: '👩', partner: 'Артем', partnerEmoji: '😘' } };
 let customMoods = JSON.parse(localStorage.getItem('customMoods') || '[]');
 let customSpicy = JSON.parse(localStorage.getItem('customSpicy') || '[]');
 let hiddenMoods = JSON.parse(localStorage.getItem('hiddenMoods') || '[]');
@@ -403,11 +403,11 @@ let kamaDB = JSON.parse(localStorage.getItem('kamaDB') || 'null');
 if (!kamaDB) { kamaDB = { 'Позы': [], 'Места': [], 'Настроение': [], 'Игры': [], 'Ласки': [] }; localStorage.setItem('kamaDB', JSON.stringify(kamaDB)); }
 const defaultMoods = [{ emoji: '😊', label: 'Радость', id: 'happy' }, { emoji: '😢', label: 'Грусть', id: 'sad' }, { emoji: '😴', label: 'Усталость', id: 'tired' }, { emoji: '😌', label: 'Спокойствие', id: 'calm' }, { emoji: '🤩', label: 'Восторг', id: 'excited' }, { emoji: '🥰', label: 'Любовь', id: 'love' }];
 const defaultSpicy = [{ emoji: '💋', label: 'Нежность', id: 'tender' }, { emoji: '🔥', label: 'Близость', id: 'close' }, { emoji: '💆', label: 'Массаж', id: 'massage' }];
-const ideas = ["Романтический ужин 🕯️", "Прогулка ночью 🌃", "Пикник 🧺", "Кино 🍿", "Танцы 💃", "Спа 💆", "Настолки 🎲", "Завтрак в постель 🥐", "Музей 🖼️", "Лодка 🚣", "Кафе ☕", "Концерт 🎤", "Старый город 🏰", "Велопрогулка 🚲", "Рынок 🥬", "Кулинария 🍳", "Аквапарк 🌊", "Океанариум 🐠", "Фестиваль 🎪", "Альбом 📸", "Лес 🌲", "Звёзды 🌃", "Театр 🎭", "Лыжи 🎿", "Баня 🧖", "Плейлист 🎧", "Арт 🖼️", "Озеро 🏕️", "Коньки ⛸️", "Еда 🌯", "Стрит-арт 🖼️", "Закат 🌅", "Квест 🕵️", "Лошади 🐴", "Вино 🍷", "Фонарики 🌃", "Танцы 💃", "Мото 🏍️", "Кино 🎬", "Планетарий 🌌", "Гончарная 🏺", "Караоке 🎤", "Коктейли 🍹", "Сап 🏄", "Аттракционы 🎢", "Бег 🏃", "Рисование 🎨", "Оранжерея 🌿", "Джаз 🎷", "Книги 📚", "Суши 🍣", "Телескоп 🔭", "Фото 📷", "Чай 🍵", "Пляж 🏖️", "Котики 🐱", "Танцы 💃", "Горы ⛰️", "Фильмы 🎬", "Бильярд 🎱", "Волонтёрство 🤝"];
+const ideas = ["Романтический ужин 🕯️", "Прогулка ночью 🌃", "Пикник ", "Кино 🍿", "Танцы 💃", "Спа 💆", "Настолки 🎲", "Завтрак в постель 🥐", "Музей ️", "Лодка 🚣", "Кафе ☕", "Концерт 🎤", "Старый город 🏰", "Велопрогулка 🚲", "Рынок 🥬", "Кулинария ", "Аквапарк 🌊", "Океанариум 🐠", "Фестиваль 🎪", "Альбом ", "Лес 🌲", "Звёзды 🌃", "Театр ", "Лыжи 🎿", "Баня 🧖", "Плейлист ", "Арт 🖼️", "Озеро 🏕️", "Коньки ️", "Еда 🌯", "Стрит-арт 🖼️", "Закат 🌅", "Квест 🕵️", "Лошади 🐴", "Вино ", "Фонарики 🌃", "Танцы 💃", "Мото 🏍️", "Кино 🎬", "Планетарий 🌌", "Гончарная 🏺", "Караоке ", "Коктейли 🍹", "Сап 🏄", "Аттракционы 🎢", "Бег 🏃", "Рисование 🎨", "Оранжерея 🌿", "Джаз ", "Книги 📚", "Суши 🍣", "Телескоп ", "Фото 📷", "Чай ", "Пляж 🏖️", "Котики 🐱", "Танцы 💃", "Горы ⛰️", "Фильмы 🎬", "Бильярд 🎱", "Волонтёрство "];
 const questions = [{ text: "Что для тебя идеальная любовь?", category: "Любовь" }, { text: "Самый важный момент?", category: "Отношения" }, { text: "Что ценишь во мне?", category: "Ценности" }, { text: "О чём мечтаешь?", category: "Мечты" }, { text: "Что делает счастливым?", category: "Счастье" }, { text: "Самый сокровенный страх?", category: "Страхи" }, { text: "Будущее через 5 лет?", category: "Будущее" }, { text: "Что значит доверие?", category: "Доверие" }, { text: "Запомнившийся комплимент?", category: "Комплименты" }, { text: "Что хочешь, чтобы я знал?", category: "Откровенность" }];
-const achievements = [{ id: 'days7', icon: '🌟', title: 'Первая неделя', desc: '7 дней вместе', check: () => getDaysTogether() >= 7 }, { id: 'days30', icon: '🎉', title: 'Месяц любви', desc: '30 дней вместе', check: () => getDaysTogether() >= 30 }, { id: 'days100', icon: '💯', title: '100 дней', desc: '100 дней вместе', check: () => getDaysTogether() >= 100 }, { id: 'days365', icon: '🎂', title: 'Год вместе!', desc: '365 дней', check: () => getDaysTogether() >= 365 }, { id: 'msg100', icon: '💬', title: 'Болтуны', desc: '100 сообщений', check: () => getMessagesCount() >= 100 }, { id: 'msg1000', icon: '📱', title: 'Неразлучные', desc: '1000 сообщений', check: () => getMessagesCount() >= 1000 }, { id: 'photo10', icon: '📸', title: 'Фотографы', desc: '10 фото', check: () => getPhotosCount() >= 10 }, { id: 'photo50', icon: '🎨', title: 'Коллекционеры', desc: '50 фото', check: () => getPhotosCount() >= 50 }, { id: 'wish1', icon: '🎁', title: 'Первый подарок', desc: '1 желание исполнено', check: () => getFulfilledWishes() >= 1 }, { id: 'wish5', icon: '🎀', title: 'Даритель', desc: '5 желаний исполнено', check: () => getFulfilledWishes() >= 5 }];
+const achievements = [{ id: 'days7', icon: '', title: 'Первая неделя', desc: '7 дней вместе', check: () => getDaysTogether() >= 7 }, { id: 'days30', icon: '🎉', title: 'Месяц любви', desc: '30 дней вместе', check: () => getDaysTogether() >= 30 }, { id: 'days100', icon: '💯', title: '100 дней', desc: '100 дней вместе', check: () => getDaysTogether() >= 100 }, { id: 'days365', icon: '', title: 'Год вместе!', desc: '365 дней', check: () => getDaysTogether() >= 365 }, { id: 'msg100', icon: '', title: 'Болтуны', desc: '100 сообщений', check: () => getMessagesCount() >= 100 }, { id: 'msg1000', icon: '📱', title: 'Неразлучные', desc: '1000 сообщений', check: () => getMessagesCount() >= 1000 }, { id: 'photo10', icon: '📸', title: 'Фотографы', desc: '10 фото', check: () => getPhotosCount() >= 10 }, { id: 'photo50', icon: '🎨', title: 'Коллекционеры', desc: '50 фото', check: () => getPhotosCount() >= 50 }, { id: 'wish1', icon: '🎁', title: 'Первый подарок', desc: '1 желание исполнено', check: () => getFulfilledWishes() >= 1 }, { id: 'wish5', icon: '🎀', title: 'Даритель', desc: '5 желаний исполнено', check: () => getFulfilledWishes() >= 5 }];
 const timelinePresets = [{ emoji: '👋', title: 'Первое знакомство' }, { emoji: '☕', title: 'Первое свидание' }, { emoji: '💋', title: 'Первый поцелуй' }, { emoji: '💕', title: 'Начало отношений' }, { emoji: '😘', title: 'Первая близость' }, { emoji: '🏠', title: 'Переехали вместе' }, { emoji: '✈️', title: 'Первое путешествие' }, { emoji: '🎊', title: 'Годовщина' }, { emoji: '💍', title: 'Предложение' }, { emoji: '🎉', title: 'Свадьба' }];
-const avatarOptions = ['👨', '👩', '👦', '👧', '🧔', '👱', '👴', '👵', '👶', '👸', '🦸', '🧙', '🧟', '🧜', '🧝', '🐱', '🐶', '🐼', '🐯', '🌳', '⭐', '✨', '☀️', '🌙', '⚡', '❄️', '🌈', '🎊', '🎭', '🎳', '🎱', '🥉', '⛸️', '🚵', '💗', '💓', '💞', '❣️', '❤️', '💚', '💙', '🖤', '🤍'];
+const avatarOptions = ['👨', '👩', '', '👧', '', '👱', '', '👵', '👶', '👸', '🦸', '🧙', '🧟', '', '🧝', '🐱', '🐶', '🐼', '🐯', '🌳', '⭐', '✨', '☀️', '🌙', '⚡', '❄️', '🌈', '🎊', '', '🎳', '🎱', '🥉', '⛸️', '🚵', '💗', '💓', '💞', '❣️', '❤️', '💚', '💙', '🖤', '🤍'];
 let hiddenBlocks = JSON.parse(localStorage.getItem('hiddenBlocks') || '[]');
 let secretPhotos = [];
 
@@ -422,7 +422,7 @@ function showPushNotification(title, body) {
 }
 function updateOnlineStatus() {
   if (!currentRole) return;
-  db.from('user_status').upsert({ user_id: currentRole, last_seen: new Date().toISOString(), is_online: true }).eq('user_id', currentRole).then(() => {}).catch(e => console.error('Status error:', e));
+  db.from('user_status').upsert({ user_id: currentRole, last_seen: new Date().toISOString(), is_online: true }, { onConflict: 'user_id' }).then(() => {}).catch(e => console.error('Status error:', e));
 }
 function checkPartnerStatus() {
   const partnerRole = currentRole === 'artem' ? 'sonya' : 'artem';
@@ -447,12 +447,25 @@ function showSync() {
   syncTimeout = setTimeout(() => ind.remove(), 1500);
 }
 function saveToDB(key, value) {
+  console.log('💾 СОХРАНЯЮ в Supabase:', key, value);
   showSync();
-  db.from('app_state').upsert({ key, value }).eq('key', key).then(({ error }) => { if (error) console.error('DB Error:', error); });
+  db.from('app_state').upsert({ key: key, value: value }, { onConflict: 'key' }).then(({ error }) => {
+    if (error) {
+      console.error('❌ ОШИБКА сохранения:', key, error);
+      showToast('Ошибка синхронизации');
+    } else {
+      console.log('✅ Успешно сохранено:', key);
+    }
+  });
 }
 function loadFromDB(key) {
+  console.log('📥 ЗАГРУЖАЮ из Supabase:', key);
   return db.from('app_state').select('value').eq('key', key).single().then(({ data, error }) => {
-    if (error) return null;
+    if (error) {
+      console.warn('⚠️ Ошибка загрузки:', key, error.message);
+      return null;
+    }
+    console.log('✅ Загружено:', key, data?.value);
     return data ? data.value : null;
   });
 }
@@ -943,8 +956,8 @@ function applyTheme(theme) {
 }
 
 function openBlocksSettings() {
-  const blocks = [{ id: 'stats', label: '📊 Статистика' }, { id: 'calendar', label: '📅 Календарь' }, { id: 'timeline', label: '📖 Наша история' }, { id: 'achievements', label: '🏆 Достижения' }, { id: 'wishlist', label: '📝 Список желаний' }, { id: 'ideas', label: '🎲 Идеи для свиданий' }, { id: 'questions', label: '❓ Вопросы' }, { id: 'secret', label: '🔞 Секретная комната' }];
-  let html = '<div class="sheet-title">⚙️ Настройка блоков</div><p style="color:var(--t2);font-size:13px;margin-bottom:16px;text-align:center">Отключи блоки, которые не нужны</p>';
+  const blocks = [{ id: 'stats', label: '📊 Статистика' }, { id: 'calendar', label: ' Календарь' }, { id: 'timeline', label: '📖 Наша история' }, { id: 'achievements', label: '🏆 Достижения' }, { id: 'wishlist', label: '📝 Список желаний' }, { id: 'ideas', label: '🎲 Идеи для свиданий' }, { id: 'questions', label: '❓ Вопросы' }, { id: 'secret', label: '🔞 Секретная комната' }];
+  let html = '<div class="sheet-title">️ Настройка блоков</div><p style="color:var(--t2);font-size:13px;margin-bottom:16px;text-align:center">Отключи блоки, которые не нужны</p>';
   blocks.forEach(b => {
     const hidden = hiddenBlocks.includes(b.id);
     html += '<div class="block-toggle"><span class="block-toggle-label">' + b.label + '</span><div class="block-toggle-switch ' + (!hidden ? 'active' : '') + '" onclick="toggleBlock(\'' + b.id + '\',this)"></div></div>';
@@ -1100,7 +1113,7 @@ function addKamaWish() {
   Object.values(kamaDB).forEach(items => { items.forEach(item => { labels[item.id] = item.label; }); });
   const selectedText = selectedKamaItems.map(id => labels[id]).join(', ');
   const items = JSON.parse(localStorage.getItem('wishlist') || '[]');
-  items.push({ text: '🔥 Желание: ' + selectedText, fulfilled: false, addedBy: roles[currentRole].name, addedByRole: currentRole, addedAt: new Date().toISOString(), archived: false });
+  items.push({ text: ' Желание: ' + selectedText, fulfilled: false, addedBy: roles[currentRole].name, addedByRole: currentRole, addedAt: new Date().toISOString(), archived: false });
   localStorage.setItem('wishlist', JSON.stringify(items));
   saveToDB('wishlist', items);
   selectedKamaItems = [];
@@ -1116,7 +1129,7 @@ function openNoteSheet() {
 function updateLetter() {
   const text = document.getElementById('noteText').value;
   const content = document.getElementById('letterContent');
-  content.textContent = text || 'Здесь появится записочка... ✨';
+  content.textContent = text || 'Здесь появится записочка... ';
   content.classList.toggle('empty', !text);
 }
 
@@ -1125,7 +1138,7 @@ function sendNote() {
   if (!text) { showToast('Напиши что-нибудь'); return; }
   saveToDB('note_' + currentRole, text);
   closeModal();
-  showToast('Записочка отправлена! 💌');
+  showToast('Записочка отправлена! ');
 }
 
 function closeModal() { document.getElementById('modal').classList.remove('active'); }
@@ -1222,7 +1235,7 @@ function handlePhotoUpload(e, previewId, frameId, captionId, sendToPartner) {
     localStorage.setItem('photosCount', (getPhotosCount() + 1).toString());
     if (sendToPartner) saveToDB('lastPhoto_' + currentRole, imgSrc);
     updateStats();
-    showToast('📸 Фото отправлено!');
+    showToast(' Фото отправлено!');
     switchTab('home');
   };
   reader.readAsDataURL(file);
@@ -1292,7 +1305,7 @@ db.channel('app_state_realtime').on('postgres_changes', { event: '*', schema: 'p
 
 window.addEventListener('beforeunload', () => {
   if (currentRole) {
-    db.from('user_status').upsert({ user_id: currentRole, last_seen: new Date().toISOString(), is_online: false }).eq('user_id', currentRole).then(() => {}).catch(() => {});
+    db.from('user_status').upsert({ user_id: currentRole, last_seen: new Date().toISOString(), is_online: false }, { onConflict: 'user_id' }).then(() => {}).catch(() => {});
   }
 });
 
